@@ -11,7 +11,7 @@ private:
     Node<T> *next;
 
 public:
-    Node() { }
+    Node() { this->value = T(); this->next = NULL; }
     Node(T);
 
     //getters
@@ -20,7 +20,7 @@ public:
 
     //setters
     void setValue(const T& value) { this->value = value; }
-    void setNext(Node<T> *next) { this->next = next; cout << "set\n"; }
+    void setNext(Node<T> *next) { this->next = next; }
 
     ~Node() { }
 };
@@ -52,7 +52,7 @@ private:
     Node<T> *start;
 
 public:
-    SinglyLinkedList() { start = NULL; }
+    SinglyLinkedList<T>() { this->start = new Node<T>(); }
 
     Node<T> *getStart() const { return this->start; }
 

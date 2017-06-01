@@ -9,20 +9,26 @@ Node<T>::Node(T value)
 template <typename T>
 void SinglyLinkedList<T>::addNode(T value)
 {
-    Node<T> *node = new Node<T>(value);
-    Node<T> *next = this->start;
+    Node<T> *node = this->createNode(value); // new Node<T>(value);
 
-
-    while (next != NULL)
+    if (this->start->getNext() == NULL && this->start->getValue() == T())
+        this->start = node;
+    else if (this->start->getNext() == NULL && this->start->getValue() != T())
+        this->start->setNext(node);
+    else
     {
-        if (next->getValue() == value)
-            return;
-        next = next->getNext();
+        Node<T> *next = this->start;
+
+        while (next->getNext() != NULL)
+        {
+            if (next->getValue() == value)
+                return;
+            next = next->getNext();
+        }
+
+        next->setNext(node);
+        cout << "set\n";
     }
-
-
-    next->setNext(node);
-    cout << "set\n";
 }
 
 
