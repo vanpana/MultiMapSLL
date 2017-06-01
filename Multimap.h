@@ -83,5 +83,5 @@ public:
     Node<T> *createNode(int *key, T *value) { Node<T> *node = new MapNode<T>(key, value); return node; }
     void addNode(int *key, T *value);
     void printMultimap();
-    //void removeNode(int *key, T value);
+    void removeNode(int *key);
 };

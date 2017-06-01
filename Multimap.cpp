@@ -65,7 +65,7 @@ void Multimap<T>::addNode(int *key, T *value)
  template <typename T>
  void SinglyLinkedList<T>::removeNode(T *value)
  {
-     if (start == NULL)
+     if (this->start == NULL)
          return;
 
 
@@ -76,13 +76,13 @@ void Multimap<T>::addNode(int *key, T *value)
      {
 
          ptr = this->start;
-         start = s->getNext();
+         this->start = s->getNext();
          free(ptr);
          return;
      }
     else
      {
-         while (s != NULL) // || *s->getValue() == *value)
+         while (s != NULL)
          {
              if (*s->getValue() == *value) break;
              ptr = s;
@@ -90,7 +90,7 @@ void Multimap<T>::addNode(int *key, T *value)
          }
 
 
-         if (s == NULL && s->getValue() != value)
+         if (s == NULL && *s->getValue() != *value)
              return;
 
          if (s == NULL)
@@ -102,44 +102,45 @@ void Multimap<T>::addNode(int *key, T *value)
      free(s);
  }
 
-// template <typename T>
-// void SinglyLinkedList<T>::removeNode(int key, T value)
-// {
-//     if (start == NULL)
-//         return;
-//
-//         Node<T> *s, *ptr;
-//         s = this->start;
-//
-//         if (s->getKey() == key)
-//         {
-//             //TODO: check leaks here
-//             ptr = this->start;
-//             start = s->getNext();
-//             free(ptr);
-//             return;
-//         }
-//         else
-//         {
-//             while (s != NULL || s->getKey() == key)
-//             {
-//                 ptr = s;
-//                 s = s->getNext();
-//             }
-//
-//
-//             if (s == NULL && s->getKey() != key)
-//                 return;
-//
-//             //TODO: check leaks here
-//
-//             if (s == NULL)
-//                 ptr->setNext(NULL);
-//
-//             else
-//                 ptr->setNext(s->getNext());
-//         }
-// }
+template <typename T>
+void Multimap<T>::removeNode(int *key)
+{
+    if (this->start == NULL)
+        return;
+
+
+    Node<T> *s, *ptr;
+    s = this->start;
+
+    if (*s->getKey() == *key)
+    {
+
+        ptr = this->start;
+        this->start = s->getNext();
+        free(ptr);
+        return;
+    }
+   else
+    {
+        while (s != NULL)
+        {
+            if (*s->getKey() == *key) break;
+            ptr = s;
+            s = s->getNext();
+        }
+
+
+        if (s == NULL && *s->getKey() != *key)
+            return;
+
+        if (s == NULL)
+            ptr->setNext(NULL);
+
+        else
+            ptr->setNext(s->getNext());
+    }
+    free(s);
+}
 
 template <typename T>
 void SinglyLinkedList<T>::printSLL()
