@@ -7,19 +7,20 @@ template <typename T>
 class Node
 {
 private:
-    T value;
+    T *value;
     Node<T> *next;
 
 public:
-    Node() { this->value = T(); this->next = NULL; }
-    Node(T);
+    Node() { this->value = NULL; this->next = NULL; }
+    Node(T*);
 
     //getters
-    T getValue() const { return this->value; }
+    T *getValue() const { return this->value; }
     Node<T> *getNext() const { return this->next; }
+    virtual int *getKey() { return NULL; };
 
     //setters
-    void setValue(const T& value) { this->value = value; }
+    void setValue(T *value) { this->value = value; }
     void setNext(Node<T> *next) { this->next = next; }
 
     ~Node() { }
@@ -29,17 +30,17 @@ template <typename T>
 class MapNode : public Node<T>
 {
 private:
-    int key;
+    int *key;
 
 public:
-    MapNode() { }
-    MapNode(int key, T value) : Node<T>(value) { this->key = key; }
+    MapNode() : Node<T>() { this->key = NULL; }
+    MapNode(int *key, T *value) : Node<T>(value) { this->key = key; }
 
     //getter
-    int getKey() const { return this->key; }
+    int *getKey() override { return this->key; }
 
     //setter
-    void setKey(const int& key) { this->key = key; }
+    void setKey(int *key) { this->key = key; }
 
     ~MapNode() { }
 };
@@ -48,7 +49,7 @@ public:
 template <typename T>
 class SinglyLinkedList
 {
-private:
+protected:
     Node<T> *start;
 
 public:
@@ -56,22 +57,31 @@ public:
 
     Node<T> *getStart() const { return this->start; }
 
-    Node<T> *createNode(T value) { Node<T> *node = new Node<T>(value); return node;}
-    Node<T> *createNode(int key, T value) { Node<T> *node = new MapNode<T>(key, value); return node; }
+    Node<T> *createNode(T *value) { Node<T> *node = new Node<T>(value); return node;}
 
-    void addNode(T value);
-    void addNode(int key, T value);
+    void addNode(T *value);
 
+    //void removeNode(T value);
+    //void removeNode(int *key, T value);
 
-    void removeNode(T value);
-    void removeNode(int key, T value);
     //search
     //iterator
     //size
     //keys
     //values
 
-    void printSLL() { Node<T> *next = start; while(next != NULL) { cout << next->getValue() << endl; next = next->getNext(); } }
+    void printSLL();
+    void printMultimap();
     //TODO: free the memory
     ~SinglyLinkedList() { }
+};
+
+template <typename T>
+class Multimap : public SinglyLinkedList<T>
+{
+public:
+    Multimap<SinglyLinkedList<T> >() { this->start = new MapNode<T>(); }
+
+    //MapNode<T> *createNode(int *key, T *value) { Node<T> *node = new MapNode<T>(key, value); return node; }
+    void addNode(int *key, T *value);
 };

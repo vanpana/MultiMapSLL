@@ -3,21 +3,23 @@
 
 int main()
 {
-    cout << "Entered\n";
     SinglyLinkedList<int> *sll = new SinglyLinkedList<int>();
 
-    cout << "Created\n";
-    sll->addNode(2);
-    cout << "Added 2\n";
-    sll->addNode(4);
-    cout << "Added 4\n";
-    sll->addNode(5);
-    cout << "Added 5\n";
-    sll->addNode(6);
-    sll->addNode(7);
+    int *a = (int*)malloc(sizeof(int));
 
+    for (int i = 10; i <= 13; i++)
+    {
+        *a = i;
+        sll->addNode(a);
+    }
 
     sll->printSLL();
-    //SinglyLinkedList< SinglyLinkedList<int> > *map = new SinglyLinkedList< SinglyLinkedList<int> >();
+    cout << endl;
+
+    // SinglyLinkedList <SinglyLinkedList<int> > *multimap = new SinglyLinkedList <SinglyLinkedList<int> >();
+    //
+    // multimap->addNode((int*)3, sll);
+    // multimap->printMultimap();
+
     return 0;
 }
