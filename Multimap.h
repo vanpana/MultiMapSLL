@@ -34,7 +34,7 @@ private:
 
 public:
     MapNode() : Node<T>() { this->key = NULL; }
-    MapNode(int *key, T *value) : Node<T>(value) { this->key = key; }
+    MapNode(int *key, T *value) : Node<T>(value) { this->key = new int(*key); }
 
     //getter
     int *getKey() override { return this->key; }
@@ -71,7 +71,6 @@ public:
     //values
 
     void printSLL();
-    void printMultimap();
     //TODO: free the memory
     ~SinglyLinkedList() { }
 };
@@ -82,6 +81,7 @@ class Multimap : public SinglyLinkedList<T>
 public:
     Multimap<SinglyLinkedList<T> >() { this->start = new MapNode<T>(); }
 
-    //MapNode<T> *createNode(int *key, T *value) { Node<T> *node = new MapNode<T>(key, value); return node; }
+    Node<T> *createNode(int *key, T *value) { Node<T> *node = new MapNode<T>(key, value); return node; }
     void addNode(int *key, T *value);
+    void printMultimap();
 };

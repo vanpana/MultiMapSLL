@@ -4,7 +4,7 @@
 template <typename T>
 Node<T>::Node(T *value)
 {
-    this->value = new int(*value); // value;
+    this->value = new T(*value); // value;
     this->next = NULL;
 }
 
@@ -39,27 +39,27 @@ template <typename T>
 void Multimap<T>::addNode(int *key, T *value)
 {
 
-    // Node<T> *node = new MapNode<T>(key, value);
-    //
-    // //TODO: check for existing key
-    // if (this->start->getNext() == NULL && this->start->getKey() == NULL)
-    // {
-    //     this->start = dynamic_cast<MapNode<T>*>(node);//new MapNode<T>();
-    //     this->start = node;
-    // }
-    // else if (this->start->getNext() == NULL && this->start->getKey() != NULL)
-    //     this->start->setNext(node);
-    //
-    // else
-    // {
-    //     Node<T> *next = this->start;
-    //
-    //
-    //     while (next != NULL)
-    //         next = next->getNext();
-    //
-    //     next->setNext(node);
-    // }
+    Node<T> *node = new MapNode<T>(key, value);
+
+    //TODO: check for existing key
+    if (this->start->getNext() == NULL && this->start->getKey() == NULL)
+    {
+        this->start = dynamic_cast<MapNode<T>*>(node);//new MapNode<T>();
+        this->start = node;
+    }
+    else if (this->start->getNext() == NULL && this->start->getKey() != NULL)
+        this->start->setNext(node);
+
+    else
+    {
+        Node<T> *next = this->start;
+
+
+        while (next != NULL)
+            next = next->getNext();
+
+        next->setNext(node);
+    }
 }
 
 // template <typename T>
@@ -151,16 +151,16 @@ void SinglyLinkedList<T>::printSLL()
 }
 
 template <typename T>
-void SinglyLinkedList<T>::printMultimap()
+void Multimap<T>::printMultimap()
 {
-    Node<T> *next = start;
+    Node<T> *current = this->start;
 
-    while(next != NULL)
+    while(current != NULL)
     {
-        cout << next->getKey() << next->getValue();
-        //next->getValue()->printSLL();
+        cout << "Key: " << * current->getKey() << endl << "Values:\n";
+        current->getValue()->printSLL();
         cout << endl;
-        next = next->getNext();
+        current = current->getNext();
     }
 }
 

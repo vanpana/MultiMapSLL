@@ -15,11 +15,13 @@ int main()
 
     sll->printSLL();
     cout << endl;
+    cout << endl;
 
-    // SinglyLinkedList <SinglyLinkedList<int> > *multimap = new SinglyLinkedList <SinglyLinkedList<int> >();
-    //
-    // multimap->addNode((int*)3, sll);
-    // multimap->printMultimap();
+    Multimap <SinglyLinkedList<int> > *multimap = new Multimap <SinglyLinkedList<int> >();
+
+    *a = 3;
+    multimap->addNode(a, sll);
+    multimap->printMultimap();
 
     return 0;
 }
