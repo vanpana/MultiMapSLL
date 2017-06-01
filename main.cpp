@@ -13,6 +13,12 @@ int main()
         sll->addNode(a);
     }
 
+    *a = 10;
+    sll->removeNode(a);
+
+    *a = 12;
+    sll->removeNode(a);
+
     sll->printSLL();
     cout << endl;
     cout << endl;
@@ -20,7 +26,9 @@ int main()
     Multimap <SinglyLinkedList<int> > *multimap = new Multimap <SinglyLinkedList<int> >();
 
     *a = 3;
+
     multimap->addNode(a, sll);
+    sll->addNode(a);
     multimap->printMultimap();
 
     return 0;

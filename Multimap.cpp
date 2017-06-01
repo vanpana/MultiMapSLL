@@ -62,42 +62,45 @@ void Multimap<T>::addNode(int *key, T *value)
     }
 }
 
-// template <typename T>
-// void SinglyLinkedList<T>::removeNode(T *value)
-// {
-//     if (start == NULL)
-//         return;
-//
-//     Node<T> *s, *ptr;
-//     s = this->start;
-//
-//     if (s->getValue() == value)
-//     {
-//         ptr = this->start;
-//         start = s->getNext();
-//         free(ptr);
-//         return;
-//     }
-//     else
-//     {
-//         while (s != NULL || s->getValue() == value)
-//         {
-//             ptr = s;
-//             s = s->getNext();
-//         }
-//
-//
-//         if (s == NULL && s->getValue() != value)
-//             return;
-//
-//         if (s == NULL)
-//             ptr->setNext(NULL);
-//
-//         else
-//             ptr->setNext(s->getNext());
-//     }
-//     free(s);
-// }
+ template <typename T>
+ void SinglyLinkedList<T>::removeNode(T *value)
+ {
+     if (start == NULL)
+         return;
+
+
+     Node<T> *s, *ptr;
+     s = this->start;
+
+     if (*s->getValue() == *value)
+     {
+
+         ptr = this->start;
+         start = s->getNext();
+         free(ptr);
+         return;
+     }
+    else
+     {
+         while (s != NULL) // || *s->getValue() == *value)
+         {
+             if (*s->getValue() == *value) break;
+             ptr = s;
+             s = s->getNext();
+         }
+
+
+         if (s == NULL && s->getValue() != value)
+             return;
+
+         if (s == NULL)
+             ptr->setNext(NULL);
+
+         else
+             ptr->setNext(s->getNext());
+     }
+     free(s);
+ }
 
 // template <typename T>
 // void SinglyLinkedList<T>::removeNode(int key, T value)
@@ -167,6 +170,7 @@ void Multimap<T>::printMultimap()
 
 
 template class Node<int>;
+
 template class SinglyLinkedList<int>;
 
 template class Multimap< SinglyLinkedList<int> >;

@@ -9,7 +9,7 @@ echo
 echo
 
 rm ./Multimap
-gcc -lstdc++ main.cpp Multimap.cpp -o Multimap
+clang -lstdc++ main.cpp Multimap.cpp -o Multimap
 
 if [ $? -eq 0 ]; then
     echo "Whooo, no errors!"
