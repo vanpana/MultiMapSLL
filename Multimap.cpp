@@ -4,7 +4,7 @@
 template <typename T>
 Node<T>::Node(T *value)
 {
-    this->value = new T(*value); // value;
+    this->value = new T(*value);
     this->next = NULL;
 }
 
@@ -13,25 +13,22 @@ void SinglyLinkedList<T>::addNode(T *value)
 {
     Node<T> *node = new Node<T>(value); //this->createNode(value);
 
-    if (this->start->getNext() == NULL && this->start->getValue() == NULL)
+    if (this->length == 0)
         this->start = node;
-
-    else if (this->start->getNext() == NULL && this->start->getValue() != NULL)
-        this->start->setNext(node);
-
     else
     {
-        Node<T> *current = this->start;
+            Node<T> *current = this->start;
 
 
-        while (current->getNext() != NULL)
-        {
-            if (current->getValue() == value)
-                return;
-            current = current->getNext();
-        }
-        current->setNext(node);
+            while (current->getNext() != NULL)
+            {
+                if (current->getValue() == value)
+                    return;
+                current = current->getNext();
+            }
+            current->setNext(node);
     }
+    this->length++;
 }
 
 
@@ -41,43 +38,42 @@ void Multimap<T>::addNode(int *key, T *value)
 
     Node<T> *node = new MapNode<T>(key, value);
 
-    //TODO: check for existing key
-    if (this->start->getNext() == NULL && this->start->getKey() == NULL)
+    if (this->length == 0)
     {
-        this->start = dynamic_cast<MapNode<T>*>(node);//new MapNode<T>();
+        //this->start = dynamic_cast<MapNode<T>*>(node);
         this->start = node;
     }
-    else if (this->start->getNext() == NULL && this->start->getKey() != NULL)
-        this->start->setNext(node);
-
     else
     {
-        Node<T> *next = this->start;
+        //TODO: check for existing key
+        Node<T> *current = this->start;
+
+        while (current->getNext() != NULL)
+            current = current->getNext();
 
 
-        while (next != NULL)
-            next = next->getNext();
-
-        next->setNext(node);
+        current->setNext(node);
     }
+    this->length++;
 }
 
  template <typename T>
  void SinglyLinkedList<T>::removeNode(T *value)
  {
-     if (this->start == NULL)
+     if (this->length == 0)
          return;
-
 
      Node<T> *s, *ptr;
      s = this->start;
 
      if (*s->getValue() == *value)
      {
-
          ptr = this->start;
-         this->start = s->getNext();
-         free(ptr);
+         if (this->length > 1)
+             this->start = s->getNext();
+         else
+             this->start = new Node<T>();
+         //free(ptr);
          return;
      }
     else
@@ -99,28 +95,35 @@ void Multimap<T>::addNode(int *key, T *value)
          else
              ptr->setNext(s->getNext());
      }
+     this->length--;
+
      free(s);
  }
 
 template <typename T>
 void Multimap<T>::removeNode(int *key)
 {
-    if (this->start == NULL)
+    if (this->length == 0)
         return;
-
 
     Node<T> *s, *ptr;
     s = this->start;
 
     if (*s->getKey() == *key)
     {
-
         ptr = this->start;
-        this->start = s->getNext();
-        free(ptr);
-        return;
+        if (this->length > 1)
+            this->start = s->getNext();
+        else //HERE SEG FAULT
+        {
+            //Node<int> *test = new MapNode<int>();
+            //Node<T>*test =
+            //cout << *test->getValue()->getStart()->getValue() << endl;
+            this->start = new MapNode<T>();
+            //cout << "START IS: \n\n\n\n"; this->start->getKey();
+        }
     }
-   else
+    else
     {
         while (s != NULL)
         {
@@ -139,6 +142,8 @@ void Multimap<T>::removeNode(int *key)
         else
             ptr->setNext(s->getNext());
     }
+    this->length--;
+
     free(s);
 }
 
@@ -157,20 +162,28 @@ void SinglyLinkedList<T>::printSLL()
 template <typename T>
 void Multimap<T>::printMultimap()
 {
-    Node<T> *current = this->start;
-
-    while(current != NULL)
+    if (this->length > 0)
     {
-        cout << "Key: " << * current->getKey() << endl << "Values:\n";
-        current->getValue()->printSLL();
-        cout << endl;
-        current = current->getNext();
+        Node<T> *current = this->start;
+
+        while(current != NULL)
+        {
+            cout << "Key: " << * current->getKey() << endl << "Values:\n";
+            current->getValue()->printSLL();
+            cout << endl;
+            current = current->getNext();
+        }
     }
+
+    else
+        cout << "There's nothing added.\n";
 }
 
 
 
 template class Node<int>;
+template class MapNode<int>;
+template class MapNode<SinglyLinkedList<int> >;
 
 template class SinglyLinkedList<int>;
 

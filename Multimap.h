@@ -22,6 +22,7 @@ public:
     //setters
     void setValue(T *value) { this->value = value; }
     void setNext(Node<T> *next) { this->next = next; }
+    virtual void setKey(int *key) {}
 
     ~Node() { }
 };
@@ -51,9 +52,10 @@ class SinglyLinkedList
 {
 protected:
     Node<T> *start;
+    int length;
 
 public:
-    SinglyLinkedList<T>() { this->start = new Node<T>(); }
+    SinglyLinkedList<T>() { this->length = 0; this->start = new Node<T>(); }
 
     Node<T> *getStart() const { return this->start; }
 
@@ -69,6 +71,7 @@ public:
     //keys
     //values
 
+    int getLength() const { return this->length; }
     void printSLL();
     //TODO: free the memory
     ~SinglyLinkedList() { }
@@ -78,7 +81,7 @@ template <typename T>
 class Multimap : public SinglyLinkedList<T>
 {
 public:
-    Multimap<SinglyLinkedList<T> >() { this->start = new MapNode<T>(); }
+    Multimap<SinglyLinkedList<T> >() { this-> length = 0; this->start = new MapNode<T>(); }
 
     Node<T> *createNode(int *key, T *value) { Node<T> *node = new MapNode<T>(key, value); return node; }
     void addNode(int *key, T *value);

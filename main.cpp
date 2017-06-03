@@ -30,13 +30,14 @@ int main()
     multimap->addNode(a, sll);
     sll->addNode(a);
 
-    multimap->removeNode(a);
+    //multimap->printMultimap();
+
+    //multimap->removeNode(a);
+
 
     *a = 4;
     multimap->addNode(a, sll);
-
-    multimap->removeNode(a);
-
+    //multimap->removeNode(a);
 
 
     multimap->printMultimap();
