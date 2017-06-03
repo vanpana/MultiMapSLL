@@ -54,10 +54,11 @@ protected:
     Node<T> *start;
     int length;
 
-public:
-    SinglyLinkedList<T>() { this->length = 0; this->start = new Node<T>(); }
+    Node<T> *currentIter;
+    int currentPosition;
 
-    Node<T> *getStart() const { return this->start; }
+public:
+    SinglyLinkedList<T>() { this->length = 0; this->start = new Node<T>(); this->currentPosition = 1; }
 
     Node<T> *createNode(T *value) { Node<T> *node = new Node<T>(value); return node;}
 
@@ -66,14 +67,22 @@ public:
     void removeNode(T *value);
 
     bool searchNode(T *value);
-    //iterator
 
+    //iterator
+    Node<T> *getIter() { this->currentIter = this->start; return this->currentIter; }
+    bool isValid() const { return this->currentPosition < this->length; }
+    Node<T> *getCurrent() const { return this->currentIter; }
+    Node<T> *getNext() { if (this->isValid()) this->currentIter = this->currentIter->getNext(); return this->currentIter; }
+
+
+    //general getters
     virtual int** getKeys() {}
     Node<T> ** getValues();
 
+    Node<T> *getStart() const { return this->start; }
     int getLength() const { return this->length; }
     void printSLL();
-    
+
     //TODO: free the memory
     ~SinglyLinkedList() { }
 };
