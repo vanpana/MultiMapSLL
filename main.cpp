@@ -48,5 +48,10 @@ int main()
 
     //multimap->printMultimap();
 
+    cout << "\n\nKeys are:\n\n";
+    int ** keys = multimap->getKeys();
+    for (int j = 0; j < multimap->getLength(); j++)
+        cout << *keys[j] << endl;
+
     return 0;
 }

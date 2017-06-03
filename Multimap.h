@@ -11,7 +11,10 @@ private:
     Node<T> *next;
 
 public:
+    //default constructor
     Node() { this->value = NULL; this->next = NULL; }
+
+    //constructor with parameter
     Node(T*);
 
     //getters
@@ -34,7 +37,10 @@ private:
     int *key;
 
 public:
+    //default constructor
     MapNode() : Node<T>() { this->key = NULL; }
+
+    //constructor with parameter
     MapNode(int *key, T *value) : Node<T>(value) { this->key = new int(*key); }
 
     //getter
@@ -55,35 +61,83 @@ protected:
     int length;
 
     Node<T> *currentIter;
-    int currentPosition;
 
 public:
-    SinglyLinkedList<T>() { this->length = 0; this->start = new Node<T>(); this->currentPosition = 1; }
+    //default constructor
+    SinglyLinkedList<T>() { this->length = 0; this->start = new Node<T>(); }
 
-    Node<T> *createNode(T *value) { Node<T> *node = new Node<T>(value); return node;}
-
+    /*
+    Adds a node to the singly linked list.
+    Input: value - T Element
+    Output: nothing, adds the new node to the SLL
+    Throws: nothing (TODO: if element exists, throw exception)
+    */
     void addNode(T *value);
 
+    /*
+    Removes a node by value.
+    Input: value - T Element
+    Output: nothing, deletes the element from the SLL
+    Throws: nothing (TODO: if element doesn't exist, throw exception)
+    */
     void removeNode(T *value);
 
+    /*
+    Checks if a node exists by value.
+    Input: value - T Element
+    Output: true if element exists, false otherwise
+    Throws: nothing
+    */
     bool searchNode(T *value);
 
-    //iterator
+
+    //======//
+    /*
+    Returns an iterator for the SLL.
+    */
     Node<T> *getIter() { this->currentIter = this->start; return this->currentIter; }
-    bool isValid() const { return this->currentPosition < this->length; }
+
+    /*
+    Check if iteration ended.
+    */
+    bool isValid() const { return !(this->currentIter->getNext() == NULL); }
+
+    /*
+    Returns current element from the iteration.
+    */
     Node<T> *getCurrent() const { return this->currentIter; }
-    Node<T> *getNext() { if (this->isValid()) this->currentIter = this->currentIter->getNext(); return this->currentIter; }
+
+    /*
+    Gets next element (if it exists) from the iteration.
+    */
+    Node<T> *getNext() { if (this->isValid()) this->currentIter = this->currentIter->getNext(); return NULL; }
 
 
-    //general getters
-    virtual int** getKeys() {}
-    Node<T> ** getValues();
+    //======//
+    virtual int**getKeys() {}
 
+    /*
+    Returns a collection of all values in the SLL.
+    */
+    Node<T> **getValues();
+
+    /*
+    Returns the start node of the SLL.
+    */
     Node<T> *getStart() const { return this->start; }
+
+    /*
+    Returns the length of the SLL.
+    */
     int getLength() const { return this->length; }
+
+    /*
+    Function to display the SLL in the console.
+    */
     void printSLL();
 
     //TODO: free the memory
+    //default destructor
     ~SinglyLinkedList() { }
 };
 
@@ -91,12 +145,40 @@ template <typename T>
 class Multimap : public SinglyLinkedList<T>
 {
 public:
+    //default constrctor
     Multimap<SinglyLinkedList<T> >() { this-> length = 0; this->start = new MapNode<T>(); }
 
-    Node<T> *createNode(int *key, T *value) { Node<T> *node = new MapNode<T>(key, value); return node; }
+    /*
+    Adds a node to the singly linked list.
+    Input: value - T Element, key - integer
+    Output: nothing, adds the new node to the Multimap
+    Throws: nothing (TODO: if key exists, throw exception)
+    */
     void addNode(int *key, T *value);
+
+    /*
+    Removes a node by key.
+    Input: key - integer
+    Output: nothing, deletes the element from the Multimap
+    Throws: nothing (TODO: if element doesn't exist, throw exception)
+    */
     void removeNode(int *key);
+
+    /*
+    Checks if a node exists by key.
+    Input: key - integer
+    Output: true if element exists, false otherwise
+    Throws: nothing
+    */
     bool searchNode(int *key);
 
+    /*
+    Returns a collection of all keys in the Multimap.
+    */
+    int** getKeys();
+
+    /*
+    Function to display the Multimap in the console.
+    */
     void printMultimap();
 };

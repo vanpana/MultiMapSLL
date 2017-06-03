@@ -1,6 +1,12 @@
 #include "Multimap.h"
 #include <typeinfo>
 
+
+/*
+====
+Node
+*/
+
 template <typename T>
 Node<T>::Node(T *value)
 {
@@ -8,10 +14,15 @@ Node<T>::Node(T *value)
     this->next = NULL;
 }
 
+/*
+==================
+Singly Linked List
+*/
+
 template <typename T>
 void SinglyLinkedList<T>::addNode(T *value)
 {
-    Node<T> *node = new Node<T>(value); //this->createNode(value);
+    Node<T> *node = new Node<T>(value);
 
     if (this->length == 0)
         this->start = node;
@@ -31,6 +42,88 @@ void SinglyLinkedList<T>::addNode(T *value)
     this->length++;
 }
 
+template <typename T>
+void SinglyLinkedList<T>::removeNode(T *value)
+{
+    if (this->length == 0)
+        return;
+
+    Node<T> *s, *ptr;
+    s = this->start;
+
+    if (*s->getValue() == *value)
+    {
+        ptr = this->start;
+        if (this->length > 1)
+            this->start = s->getNext();
+        else
+            this->start = new Node<T>();
+        //free(ptr);
+        return;
+    }
+   else
+    {
+        while (s != NULL)
+        {
+            if (*s->getValue() == *value) break;
+            ptr = s;
+            s = s->getNext();
+        }
+
+
+        if (s == NULL && *s->getValue() != *value)
+            return;
+
+        if (s == NULL)
+            ptr->setNext(NULL);
+
+        else
+            ptr->setNext(s->getNext());
+    }
+    this->length--;
+
+    free(s);
+}
+
+template <typename T>
+bool SinglyLinkedList<T>::searchNode(T *value)
+{
+    Node<T> *current = this->start;
+
+    while (current->getNext() != NULL)
+    {
+        if (*current->getValue() == *value)
+            return true;
+        current = current->getNext();
+    }
+
+    if (*current->getValue() == *value)
+        return true;
+
+    return false;
+}
+
+template <typename T>
+Node<T> **SinglyLinkedList<T>::getValues()
+{
+    Node<T> **values = (Node<T>**)malloc(this->length * sizeof(Node<T>*));
+    int counter = 0;
+    Node<T> *current = this->start;
+
+    while (current->getNext() != NULL)
+    {
+        values[counter++] = current->getValue();
+        current = current->getNext();
+    }
+    values[counter++] = current->getValue();
+    return values;
+}
+
+/*
+========
+MULTIMAP
+*/
+
 
 template <typename T>
 void Multimap<T>::addNode(int *key, T *value)
@@ -39,10 +132,7 @@ void Multimap<T>::addNode(int *key, T *value)
     Node<T> *node = new MapNode<T>(key, value);
 
     if (this->length == 0)
-    {
-        //this->start = dynamic_cast<MapNode<T>*>(node);
         this->start = node;
-    }
     else
     {
         //TODO: check for existing key
@@ -51,54 +141,12 @@ void Multimap<T>::addNode(int *key, T *value)
         while (current->getNext() != NULL)
             current = current->getNext();
 
-
         current->setNext(node);
     }
     this->length++;
 }
 
- template <typename T>
- void SinglyLinkedList<T>::removeNode(T *value)
- {
-     if (this->length == 0)
-         return;
 
-     Node<T> *s, *ptr;
-     s = this->start;
-
-     if (*s->getValue() == *value)
-     {
-         ptr = this->start;
-         if (this->length > 1)
-             this->start = s->getNext();
-         else
-             this->start = new Node<T>();
-         //free(ptr);
-         return;
-     }
-    else
-     {
-         while (s != NULL)
-         {
-             if (*s->getValue() == *value) break;
-             ptr = s;
-             s = s->getNext();
-         }
-
-
-         if (s == NULL && *s->getValue() != *value)
-             return;
-
-         if (s == NULL)
-             ptr->setNext(NULL);
-
-         else
-             ptr->setNext(s->getNext());
-     }
-     this->length--;
-
-     free(s);
- }
 
 template <typename T>
 void Multimap<T>::removeNode(int *key)
@@ -147,23 +195,6 @@ void Multimap<T>::removeNode(int *key)
     free(s);
 }
 
-template <typename T>
-bool SinglyLinkedList<T>::searchNode(T *value)
-{
-    Node<T> *current = this->start;
-
-    while (current->getNext() != NULL)
-    {
-        if (*current->getValue() == *value)
-            return true;
-        current = current->getNext();
-    }
-
-    if (*current->getValue() == *value)
-        return true;
-
-    return false;
-}
 
 template <typename T>
 bool Multimap<T>::searchNode(int *key)
@@ -183,6 +214,22 @@ bool Multimap<T>::searchNode(int *key)
     return false;
 }
 
+template <typename T>
+int** Multimap<T>::getKeys()
+{
+    int **keys = (int**)malloc(this->length * sizeof(int*));
+    int counter = 0;
+    Node<T> *current = this->start;
+
+    while (current->getNext() != NULL)
+    {
+        keys[counter++] = current->getKey();
+        current = current->getNext();
+    }
+    keys[counter++] = current->getKey();
+    return keys;
+}
+
 /*
 ===============
 PRETTY PRINTING
@@ -191,12 +238,12 @@ PRETTY PRINTING
 template <typename T>
 void SinglyLinkedList<T>::printSLL()
 {
-    Node<T> *next = this->start;
+    Node<T> *current = this->start;
 
-    while(next != NULL)
+    while(current != NULL)
     {
-        cout << *next->getValue() << endl;
-        next = next->getNext();
+        cout << *current->getValue() << endl;
+        next = current->getNext();
     }
 }
 
@@ -221,6 +268,10 @@ void Multimap<T>::printMultimap()
 }
 
 
+/*
+====================
+TEMPLATE DEFINITIONS
+*/
 
 template class Node<int>;
 template class MapNode<int>;
