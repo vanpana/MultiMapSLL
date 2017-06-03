@@ -17,10 +17,14 @@ int main()
     sll->removeNode(a);
 
     *a = 12;
-    sll->removeNode(a);
+
 
     sll->printSLL();
     cout << endl;
+
+    if (sll->searchNode(a))
+        cout << "SLL is True";
+
     cout << endl;
 
     Multimap <SinglyLinkedList<int> > *multimap = new Multimap <SinglyLinkedList<int> >();
@@ -39,8 +43,10 @@ int main()
     multimap->addNode(a, sll);
     //multimap->removeNode(a);
 
+    if (multimap->searchNode(a))
+        cout << "MM is True";
 
-    multimap->printMultimap();
+    //multimap->printMultimap();
 
     return 0;
 }

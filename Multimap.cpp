@@ -148,6 +148,47 @@ void Multimap<T>::removeNode(int *key)
 }
 
 template <typename T>
+bool SinglyLinkedList<T>::searchNode(T *value)
+{
+    Node<T> *current = this->start;
+
+    while (current->getNext() != NULL)
+    {
+        if (*current->getValue() == *value)
+            return true;
+        current = current->getNext();
+    }
+
+    if (*current->getValue() == *value)
+        return true;
+
+    return false;
+}
+
+template <typename T>
+bool Multimap<T>::searchNode(int *key)
+{
+    Node<T> *current = this->start;
+
+    while (current->getNext() != NULL)
+    {
+        if (*current->getKey() == *key)
+            return true;
+        current = current->getNext();
+    }
+
+    if (*current->getKey() == *key)
+        return true;
+
+    return false;
+}
+
+/*
+===============
+PRETTY PRINTING
+*/
+
+template <typename T>
 void SinglyLinkedList<T>::printSLL()
 {
     Node<T> *next = this->start;

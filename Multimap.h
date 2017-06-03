@@ -65,14 +65,15 @@ public:
 
     void removeNode(T *value);
 
-    //search
+    bool searchNode(T *value);
     //iterator
-    //size
-    //keys
-    //values
+
+    virtual int** getKeys() {}
+    Node<T> ** getValues();
 
     int getLength() const { return this->length; }
     void printSLL();
+    
     //TODO: free the memory
     ~SinglyLinkedList() { }
 };
@@ -85,6 +86,8 @@ public:
 
     Node<T> *createNode(int *key, T *value) { Node<T> *node = new MapNode<T>(key, value); return node; }
     void addNode(int *key, T *value);
-    void printMultimap();
     void removeNode(int *key);
+    bool searchNode(int *key);
+
+    void printMultimap();
 };
