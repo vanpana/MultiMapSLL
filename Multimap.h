@@ -119,7 +119,7 @@ public:
     /*
     Returns a collection of all values in the SLL.
     */
-    Node<T> **getValues();
+    T **getValues();
 
     /*
     Returns the start node of the SLL.
