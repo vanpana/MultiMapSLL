@@ -3,7 +3,7 @@
 
 int main()
 {
-    Repository *repo = new Repository();
+    Repository *repo = new FileRepository("data/bankaccounts.txt");
     Controller *ctrl = new Controller(repo);
     Console *ui = new Console(ctrl);
 

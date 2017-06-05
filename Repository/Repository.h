@@ -33,3 +33,5 @@ public:
     FileRepository(string filename) : Repository() { this->filename = filename; this->readFromFile(); }
 
 };
+
+string *splitString(string, char);
