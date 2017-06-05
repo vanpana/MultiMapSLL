@@ -145,7 +145,7 @@ template <typename T>
 class Multimap : public SinglyLinkedList<T>
 {
 public:
-    //default constrctor
+    //default constrctor #TODO: Copy constructor?
     Multimap<SinglyLinkedList<T> >() { this-> length = 0; this->start = new MapNode<T>(); }
 
     /*

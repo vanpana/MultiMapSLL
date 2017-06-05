@@ -9,7 +9,7 @@ echo
 echo
 
 rm ./Multimap
-clang -lstdc++ main.cpp Multimap.cpp -o Multimap
+clang -lstdc++ main.cpp Entities/Multimap.cpp Entities/Date.cpp Repository/Repository.cpp Controller/Controller.cpp UI/Console.cpp -o Multimap
 
 if [ $? -eq 0 ]; then
     echo "Whooo, no errors!"

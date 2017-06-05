@@ -1,7 +1,7 @@
 #include "Multimap.h"
 #include "Date.h"
 #include <typeinfo>
-#include <string>
+
 using namespace std;
 
 
@@ -202,17 +202,17 @@ void Multimap<T>::removeNode(int *key)
 template <typename T>
 bool Multimap<T>::searchNode(int *key)
 {
+    if (this->length == 0)
+        return false;
+
     Node<T> *current = this->start;
 
-    while (current->getNext() != NULL)
+    while (current != NULL)
     {
         if (*current->getKey() == *key)
             return true;
         current = current->getNext();
     }
-
-    if (*current->getKey() == *key)
-        return true;
 
     return false;
 }
@@ -283,7 +283,7 @@ template class MapNode<SinglyLinkedList<int> >;
 template class MapNode<SinglyLinkedList<Date> >;
 
 template class SinglyLinkedList<int>;
-template class SinglyLinkedList<string>;
+template class SinglyLinkedList<Date>;
 
 template class Multimap< SinglyLinkedList<int> >;
 template class Multimap< SinglyLinkedList<Date> >;
