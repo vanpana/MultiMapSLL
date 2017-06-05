@@ -5,6 +5,10 @@ Create an application used to store and manage a bank account database, each cli
 
 Problem solved using a Multimap implemented using Singly Linked Lists alocated dinamically
 
+[See Specification](https://github.com/vanpana/MultiMapSLL#adt-specification) :fire: <br>
+[See Interface](https://github.com/vanpana/MultiMapSLL#adt-interface) :fire: <br>
+[See Representation](https://github.com/vanpana/MultiMapSLL#adt-representation) :fire: <br>
+
 # ADT Specification
 o	Multimap = {m| m is a map with elements e = (k,v), where k ∈ TKey and v ∈ set on SLL} <br>
 o	Set = S = {s|s is a set with elements of the type TElement} <br>
