@@ -1,18 +1,4 @@
 #include "Console.h"
-#include <sstream>
-
-string *splitString(string temp, char separator)
-{
-    string* args = new string[5];
-    stringstream ss(temp);
-    string token;
-    int i = 0;
-
-    while(getline(ss, token, separator))
-        args[i++] = token;
-
-    return args;
-}
 
 void Console::printMenu()
 {

@@ -18,7 +18,7 @@ public:
     Multimap<SinglyLinkedList<Date> >* getAll() { return this->items; }
     int getLength() { return this->items->getLength(); }
 
-    ~Repository() { delete[] this->items;}
+    virtual ~Repository() { delete this->items;}
 };
 
 class FileRepository : public Repository
@@ -26,10 +26,14 @@ class FileRepository : public Repository
 private:
     string filename;
     void readFromFile();
+    void saveToFile();
 
 public:
     FileRepository() {}
 
     FileRepository(string filename) : Repository() { this->filename = filename; this->readFromFile(); }
 
+    ~FileRepository() override { saveToFile(); }
 };
+
+string *splitString(string, char);

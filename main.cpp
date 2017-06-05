@@ -3,10 +3,14 @@
 
 int main()
 {
-    Repository *repo = new Repository();
+    Repository *repo = new FileRepository("data/bankaccounts.txt");
+    //Repository *repo = new Repository();
     Controller *ctrl = new Controller(repo);
     Console *ui = new Console(ctrl);
 
     ui->runApp();
+
+    delete ui;
+
     return 0;
 }

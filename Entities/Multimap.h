@@ -136,6 +136,21 @@ public:
     */
     void printSLL();
 
+    friend ostream& operator<<(ostream& os, const SinglyLinkedList& sll)
+    {
+        if (sll.getLength() > 0)
+        {
+            Node<T> *current = sll.getStart();
+
+            while(current != NULL)
+            {
+                os << *current->getValue() << endl;
+                current = current->getNext();
+            }
+        }
+        return os;
+    }
+
     //TODO: free the memory
     //default destructor
     ~SinglyLinkedList() { }
@@ -181,4 +196,21 @@ public:
     Function to display the Multimap in the console.
     */
     void printMultimap();
+
+    friend ostream& operator<<(ostream& os, const Multimap& m)
+    {
+        if (m.getLength() > 0)
+        {
+            Node<T> *current = m.getStart();
+
+            while(current != NULL)
+            {
+                os << *current->getKey() << endl;
+                os << *current->getValue();
+
+                current = current->getNext();
+            }
+        }
+        return os;
+    }
 };
