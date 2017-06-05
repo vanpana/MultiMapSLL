@@ -87,3 +87,12 @@ void FileRepository::readFromFile()
     }
     f.close();
 }
+
+void FileRepository::saveToFile()
+{
+    ofstream f(this->filename);
+    
+    f << *items;
+
+    f.close();
+}

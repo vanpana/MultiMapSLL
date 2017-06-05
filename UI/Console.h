@@ -26,5 +26,5 @@ public:
     void loop();
     void runApp();
 
-    ~Console() { }
+    ~Console() { delete ctrl; }
 };
