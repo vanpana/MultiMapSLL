@@ -1,5 +1,8 @@
 #include "Multimap.h"
+#include "Date.h"
 #include <typeinfo>
+
+using namespace std;
 
 
 /*
@@ -104,9 +107,9 @@ bool SinglyLinkedList<T>::searchNode(T *value)
 }
 
 template <typename T>
-Node<T> **SinglyLinkedList<T>::getValues()
+T **SinglyLinkedList<T>::getValues()
 {
-    Node<T> **values = (Node<T>**)malloc(this->length * sizeof(Node<T>*));
+    T **values = (T**)malloc(this->length * sizeof(T));
     int counter = 0;
     Node<T> *current = this->start;
 
@@ -199,17 +202,17 @@ void Multimap<T>::removeNode(int *key)
 template <typename T>
 bool Multimap<T>::searchNode(int *key)
 {
+    if (this->length == 0)
+        return false;
+
     Node<T> *current = this->start;
 
-    while (current->getNext() != NULL)
+    while (current != NULL)
     {
         if (*current->getKey() == *key)
             return true;
         current = current->getNext();
     }
-
-    if (*current->getKey() == *key)
-        return true;
 
     return false;
 }
@@ -243,7 +246,7 @@ void SinglyLinkedList<T>::printSLL()
     while(current != NULL)
     {
         cout << *current->getValue() << endl;
-        next = current->getNext();
+        current = current->getNext();
     }
 }
 
@@ -274,9 +277,13 @@ TEMPLATE DEFINITIONS
 */
 
 template class Node<int>;
-template class MapNode<int>;
+template class Node<Date>;
+
 template class MapNode<SinglyLinkedList<int> >;
+template class MapNode<SinglyLinkedList<Date> >;
 
 template class SinglyLinkedList<int>;
+template class SinglyLinkedList<Date>;
 
 template class Multimap< SinglyLinkedList<int> >;
+template class Multimap< SinglyLinkedList<Date> >;
