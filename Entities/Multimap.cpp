@@ -50,7 +50,7 @@ void SinglyLinkedList<T>::removeNode(T *value)
     Node<T> *ptr;
     SLLIterator *i = getIter();
 
-    if (*getCurrent(i)->getValue() == *value)
+    if (*getNext(i)->getValue() == *value)
     {
         if (this->length > 1)
             this->start = getNext(i);
