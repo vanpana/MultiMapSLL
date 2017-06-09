@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
+
 using namespace std;
 
 template <typename T>
@@ -213,4 +214,22 @@ public:
         }
         return os;
     }
+};
+
+template <typename T>
+class MultimapIterator
+{
+private:
+    Multimap<SinglyLinkedList<T> > *map;
+    Node<T> *current;
+
+public:
+    MultimapIterator() {}
+    MultimapIterator(Multimap<SinglyLinkedList<T> > map) { this->map = map; this->current = map->getStart(); }
+
+    bool isValid() { return !(this->current->getNext() == NULL); }
+    Node<T> *getCurrent() { return this->current; }
+    Node<T> *getNext() { if (isValid()) { current = current->getNext(); return this->current; } return NULL; }
+
+    ~MultimapIterator() { }
 };
