@@ -80,16 +80,13 @@ void Console::removeTransaction()
 void Console::viewAllCustomerID()
 {
     Multimap<SinglyLinkedList<Date> > *items = this->ctrl->getAll();
-    Node<SinglyLinkedList<Date> > *current = items->getStart();
+    Multimap<SinglyLinkedList<Date> >::MultimapIterator *i = new Multimap<SinglyLinkedList<Date> >::MultimapIterator(items);
 
     cout << "There are " << items->getLength() << " clients.\n";
 
     if (items->getLength() > 0)
-        while (current != NULL)
-        {
-            cout << "Client with ID " << *current->getKey() << "\n";
-            current = current->getNext();
-        }
+        while (items->getNext(i) != NULL)
+            cout << "Client with ID " << *items->getCurrent(i)->getKey() << "\n";
 }
 
 void Console::viewCustomerTransactions()
@@ -98,19 +95,16 @@ void Console::viewCustomerTransactions()
     int id = getInteger();
 
     Multimap<SinglyLinkedList<Date> > *items = this->ctrl->getAll();
-    Node<SinglyLinkedList<Date> > *current = items->getStart();
+    Multimap<SinglyLinkedList<Date> >::MultimapIterator *i = new Multimap<SinglyLinkedList<Date> >::MultimapIterator(items);
 
     if (items->getLength() > 0)
     {
-        while (current != NULL)
-        {
-            if (*current->getKey() == id)
+        while (items->getNext(i) != NULL)
+            if (*items->getCurrent(i)->getKey() == id)
             {
-                current->getValue()->printSLL();
+                items->getCurrent(i)->getValue()->printSLL();
                 return;
             }
-            current = current->getNext();
-        }
         cout << "There is no client with the specified ID.\n";
     }
     else

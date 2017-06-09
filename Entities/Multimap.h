@@ -165,7 +165,7 @@ public:
 
     //TODO: free the memory
     //default destructor
-    ~SinglyLinkedList() { }
+    ~SinglyLinkedList() { delete this->start; }
 };
 
 template <typename T>
@@ -173,7 +173,7 @@ class Multimap : public SinglyLinkedList<T>
 {
 public:
     //default constrctor #TODO: Copy constructor?
-    Multimap<SinglyLinkedList<T> >() { this-> length = 0; this->start = new MapNode<T>(); }
+    Multimap<SinglyLinkedList<T> >() { this-> length = 0; }
 
     class MultimapIterator : public SinglyLinkedList<T>::SLLIterator
     {

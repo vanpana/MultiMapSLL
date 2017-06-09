@@ -120,12 +120,12 @@ void Multimap<T>::addNode(int *key, T *value)
         this->start = node;
     else
     {
-        //TODO: check for existing key
         Node<T> *current = this->start;
         MultimapIterator *i = getIter();
 
         while (getNext(i) != NULL)
-            continue;
+            if (*getCurrent(i)->getKey() == *key)
+                throw runtime_error(string("Cannot have duplicate keys!"));
 
         getCurrent(i)->setNext(node);
     }
