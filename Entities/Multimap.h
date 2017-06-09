@@ -67,6 +67,23 @@ public:
     //default constructor
     SinglyLinkedList<T>() { this->length = 0; this->start = new Node<T>(); }
 
+    class SLLIterator
+    {
+    private:
+        SinglyLinkedList<T> *sll;
+        Node<T> *current;
+
+    public:
+        SLLIterator() {}
+        SLLIterator(SinglyLinkedList<T> *sll) { this->sll = sll; current = NULL; }
+
+        bool isValid() { return !(current->getNext() == NULL); }
+        Node<T> *getCurrent() { return current; }
+        Node<T> *getNext() { if (current == NULL) { current = sll->getStart(); return current; } else if (isValid()) { current = current->getNext(); return current; } return NULL; }
+
+        ~SLLIterator() { }
+    };
+
     /*
     Adds a node to the singly linked list.
     Input: value - T Element
@@ -96,23 +113,17 @@ public:
     /*
     Returns an iterator for the SLL.
     */
-    Node<T> *getIter() { this->currentIter = this->start; return this->currentIter; }
-
-    /*
-    Check if iteration ended.
-    */
-    bool isValid() const { return !(this->currentIter->getNext() == NULL); }
+    SLLIterator *getIter() { SLLIterator *i = new SLLIterator(this); return i; }
 
     /*
     Returns current element from the iteration.
     */
-    Node<T> *getCurrent() const { return this->currentIter; }
+    Node<T> *getCurrent(SLLIterator *i) const { return i->getCurrent(); }
 
     /*
     Gets next element (if it exists) from the iteration.
     */
-    Node<T> *getNext() { if (this->isValid()) this->currentIter = this->currentIter->getNext(); return NULL; }
-
+    Node<T> *getNext(SLLIterator *i) { return i->getNext(); }
 
     //======//
     virtual int**getKeys() {}
@@ -164,6 +175,23 @@ public:
     //default constrctor #TODO: Copy constructor?
     Multimap<SinglyLinkedList<T> >() { this-> length = 0; this->start = new MapNode<T>(); }
 
+    class MultimapIterator : public SinglyLinkedList<T>::SLLIterator
+    {
+    private:
+        Multimap<T>*map;
+        Node<T> *current;
+
+    public:
+        MultimapIterator() {}
+        MultimapIterator(Multimap<T> *map) { this->map = map; current = NULL; }
+
+        bool isValid() { return !(current->getNext() == NULL); }
+        Node<T> *getCurrent() { return current; }
+        Node<T> *getNext() { if (current == NULL) { current = map->getStart(); return current; } else if (isValid()) { current = current->getNext(); return current; } return NULL; }
+
+        ~MultimapIterator() { }
+    };
+
     /*
     Adds a node to the singly linked list.
     Input: value - T Element, key - integer
@@ -187,6 +215,21 @@ public:
     Throws: nothing
     */
     bool searchNode(int *key);
+
+    /*
+    Returns an iterator for the SLL.
+    */
+    MultimapIterator *getIter() { MultimapIterator *i = new MultimapIterator(this); return i; }
+
+    /*
+    Returns current element from the iteration.
+    */
+    Node<T> *getCurrent(MultimapIterator *i) const { return i->getCurrent(); }
+
+    /*
+    Gets next element (if it exists) from the iteration.
+    */
+    Node<T> *getNext(MultimapIterator *i) { return i->getNext(); }
 
     /*
     Returns a collection of all keys in the Multimap.
@@ -214,22 +257,4 @@ public:
         }
         return os;
     }
-};
-
-template <typename T>
-class MultimapIterator
-{
-private:
-    Multimap<SinglyLinkedList<T> > *map;
-    Node<T> *current;
-
-public:
-    MultimapIterator() {}
-    MultimapIterator(Multimap<SinglyLinkedList<T> > map) { this->map = map; this->current = map->getStart(); }
-
-    bool isValid() { return !(this->current->getNext() == NULL); }
-    Node<T> *getCurrent() { return this->current; }
-    Node<T> *getNext() { if (isValid()) { current = current->getNext(); return this->current; } return NULL; }
-
-    ~MultimapIterator() { }
 };

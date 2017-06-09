@@ -31,16 +31,12 @@ void SinglyLinkedList<T>::addNode(T *value)
         this->start = node;
     else
     {
-            Node<T> *current = this->start;
+        SLLIterator *i = getIter();
 
+        while (getNext(i) != NULL)
+            continue;
 
-            while (current->getNext() != NULL)
-            {
-                if (current->getValue() == value)
-                    return;
-                current = current->getNext();
-            }
-            current->setNext(node);
+        getCurrent(i)->setNext(node);
     }
     this->length++;
 }
@@ -51,57 +47,47 @@ void SinglyLinkedList<T>::removeNode(T *value)
     if (this->length == 0)
         return;
 
-    Node<T> *s, *ptr;
-    s = this->start;
+    Node<T> *ptr;
+    SLLIterator *i = getIter();
 
-    if (*s->getValue() == *value)
+    if (*getCurrent(i)->getValue() == *value)
     {
-        ptr = this->start;
         if (this->length > 1)
-            this->start = s->getNext();
+            this->start = getNext(i);
         else
             this->start = new Node<T>();
-        //free(ptr);
+
         return;
     }
    else
     {
-        while (s != NULL)
+        while (getNext(i) != NULL)
         {
-            if (*s->getValue() == *value) break;
-            ptr = s;
-            s = s->getNext();
+            if (*getCurrent(i)->getValue() == *value) break;
+            ptr = getCurrent(i);
         }
 
 
-        if (s == NULL && *s->getValue() != *value)
+        if (getNext(i) == NULL && *getCurrent(i)->getValue() != *value)
             return;
 
-        if (s == NULL)
+        if (getNext(i) == NULL)
             ptr->setNext(NULL);
 
         else
-            ptr->setNext(s->getNext());
+            ptr->setNext(getNext(i));
     }
     this->length--;
-
-    free(s);
 }
 
 template <typename T>
 bool SinglyLinkedList<T>::searchNode(T *value)
 {
-    Node<T> *current = this->start;
+    SLLIterator *i = getIter();
 
-    while (current->getNext() != NULL)
-    {
-        if (*current->getValue() == *value)
+    while (getNext(i) != NULL)
+        if (*getCurrent(i)->getValue() == *value)
             return true;
-        current = current->getNext();
-    }
-
-    if (*current->getValue() == *value)
-        return true;
 
     return false;
 }
@@ -111,14 +97,12 @@ T **SinglyLinkedList<T>::getValues()
 {
     T **values = (T**)malloc(this->length * sizeof(T));
     int counter = 0;
-    Node<T> *current = this->start;
 
-    while (current->getNext() != NULL)
-    {
-        values[counter++] = current->getValue();
-        current = current->getNext();
-    }
-    values[counter++] = current->getValue();
+    SLLIterator *i = getIter();
+
+    while (getNext(i) != NULL)
+        values[counter++] = getCurrent(i)->getValue();
+
     return values;
 }
 
@@ -127,11 +111,9 @@ T **SinglyLinkedList<T>::getValues()
 MULTIMAP
 */
 
-
 template <typename T>
 void Multimap<T>::addNode(int *key, T *value)
 {
-
     Node<T> *node = new MapNode<T>(key, value);
 
     if (this->length == 0)
@@ -140,16 +122,15 @@ void Multimap<T>::addNode(int *key, T *value)
     {
         //TODO: check for existing key
         Node<T> *current = this->start;
+        MultimapIterator *i = getIter();
 
-        while (current->getNext() != NULL)
-            current = current->getNext();
+        while (getNext(i) != NULL)
+            continue;
 
-        current->setNext(node);
+        getCurrent(i)->setNext(node);
     }
     this->length++;
 }
-
-
 
 template <typename T>
 void Multimap<T>::removeNode(int *key)
@@ -157,45 +138,35 @@ void Multimap<T>::removeNode(int *key)
     if (this->length == 0)
         return;
 
-    Node<T> *s, *ptr;
-    s = this->start;
+    Node<T> *ptr;
+    MultimapIterator *i = getIter();
 
-    if (*s->getKey() == *key)
+    if (*getCurrent(i)->getKey() == *key)
     {
-        ptr = this->start;
         if (this->length > 1)
-            this->start = s->getNext();
-        else //HERE SEG FAULT
-        {
-            //Node<int> *test = new MapNode<int>();
-            //Node<T>*test =
-            //cout << *test->getValue()->getStart()->getValue() << endl;
+            this->start = getCurrent(i)->getNext();
+        else
             this->start = new MapNode<T>();
-            //cout << "START IS: \n\n\n\n"; this->start->getKey();
-        }
     }
     else
     {
-        while (s != NULL)
+        while (getNext(i) != NULL)
         {
-            if (*s->getKey() == *key) break;
-            ptr = s;
-            s = s->getNext();
+            if (*getCurrent(i)->getKey() == *key) break;
+            ptr = getCurrent(i);
         }
 
-
-        if (s == NULL && *s->getKey() != *key)
+        if (getCurrent(i) == NULL && *getCurrent(i)->getKey() != *key)
             return;
 
-        if (s == NULL)
+        if (getCurrent(i) == NULL)
             ptr->setNext(NULL);
 
         else
-            ptr->setNext(s->getNext());
+            ptr->setNext(getNext(i));
     }
     this->length--;
 
-    free(s);
 }
 
 
@@ -205,14 +176,11 @@ bool Multimap<T>::searchNode(int *key)
     if (this->length == 0)
         return false;
 
-    Node<T> *current = this->start;
+    MultimapIterator *i = getIter();
 
-    while (current != NULL)
-    {
-        if (*current->getKey() == *key)
+    while (getNext(i) != NULL)
+        if (*getCurrent(i)->getKey() == *key)
             return true;
-        current = current->getNext();
-    }
 
     return false;
 }
@@ -222,14 +190,12 @@ int** Multimap<T>::getKeys()
 {
     int **keys = (int**)malloc(this->length * sizeof(int*));
     int counter = 0;
-    Node<T> *current = this->start;
 
-    while (current->getNext() != NULL)
-    {
-        keys[counter++] = current->getKey();
-        current = current->getNext();
-    }
-    keys[counter++] = current->getKey();
+    MultimapIterator *i = getIter();
+
+    while (getNext(i) != NULL)
+        keys[counter++] = getCurrent(i)->getKey();
+
     return keys;
 }
 
@@ -241,12 +207,12 @@ PRETTY PRINTING
 template <typename T>
 void SinglyLinkedList<T>::printSLL()
 {
-    Node<T> *current = this->start;
-
-    while(current != NULL)
+    if (this->length > 0)
     {
-        cout << *current->getValue() << endl;
-        current = current->getNext();
+        SLLIterator *i = getIter();
+
+        while(getNext(i) != NULL)
+            cout << *getCurrent(i)->getValue() << endl;
     }
 }
 
@@ -255,14 +221,13 @@ void Multimap<T>::printMultimap()
 {
     if (this->length > 0)
     {
-        Node<T> *current = this->start;
+        MultimapIterator *i = getIter();
 
-        while(current != NULL)
+        while(getNext(i) != NULL)
         {
-            cout << "Key: " << * current->getKey() << endl << "Values:\n";
-            current->getValue()->printSLL();
+            cout << "Key: " << *getCurrent(i)->getKey() << endl << "Values:\n";
+            getCurrent(i)->getValue()->printSLL();
             cout << endl;
-            current = current->getNext();
         }
     }
 
