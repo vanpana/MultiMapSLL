@@ -91,7 +91,7 @@ void FileRepository::readFromFile()
 void FileRepository::saveToFile()
 {
     ofstream f(this->filename);
-    
+
     f << *items;
 
     f.close();

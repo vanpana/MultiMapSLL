@@ -141,7 +141,7 @@ void Multimap<T>::removeNode(int *key)
     Node<T> *ptr;
     MultimapIterator *i = getIter();
 
-    if (*getCurrent(i)->getKey() == *key)
+    if (*getNext(i)->getKey() == *key)
     {
         if (this->length > 1)
             this->start = getCurrent(i)->getNext();
@@ -166,7 +166,6 @@ void Multimap<T>::removeNode(int *key)
             ptr->setNext(getNext(i));
     }
     this->length--;
-
 }
 
 
