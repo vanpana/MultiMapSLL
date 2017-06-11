@@ -64,7 +64,15 @@ void Repository::del(int *key, Date* value)
 
 void FileRepository::readFromFile()
 {
+    //checking for inexistent file
     ifstream f(this->filename);
+    if (!f)
+    {
+        ofstream g(this->filename);
+        g << "";
+        g.close();
+        return;
+    }
     string temp;
     string* args;
     int *key = (int*)malloc(sizeof(int));

@@ -282,6 +282,21 @@ main.s:
 .PHONY : main.s
 
 # target to build an object file
+tests/test_controller.o:
+	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/tests/test_controller.o
+.PHONY : tests/test_controller.o
+
+# target to preprocess a source file
+tests/test_controller.i:
+	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/tests/test_controller.i
+.PHONY : tests/test_controller.i
+
+# target to generate assembly for a file
+tests/test_controller.s:
+	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/tests/test_controller.s
+.PHONY : tests/test_controller.s
+
+# target to build an object file
 tests/test_date.o:
 	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/tests/test_date.o
 .PHONY : tests/test_date.o
@@ -355,6 +370,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... tests/test_controller.o"
+	@echo "... tests/test_controller.i"
+	@echo "... tests/test_controller.s"
 	@echo "... tests/test_date.o"
 	@echo "... tests/test_date.i"
 	@echo "... tests/test_date.s"

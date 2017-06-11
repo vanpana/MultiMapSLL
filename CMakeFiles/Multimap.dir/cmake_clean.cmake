@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Multimap.dir/tests/test_node.o"
   "CMakeFiles/Multimap.dir/tests/test_multimap.o"
   "CMakeFiles/Multimap.dir/tests/test_date.o"
+  "CMakeFiles/Multimap.dir/tests/test_controller.o"
   "Multimap.pdb"
   "Multimap"
 )

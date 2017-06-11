@@ -20,6 +20,7 @@ UI/Console.cpp UI/Console.h
 tests/test_node.cpp tests/test_node.h
 tests/test_multimap.cpp tests/test_multimap.h
 tests/test_date.cpp tests/test_date.h
+tests/test_controller.cpp tests/test_controller.h
 )
 
 add_subdirectory(lib/googletest-master)
