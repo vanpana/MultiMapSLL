@@ -150,16 +150,18 @@ void Multimap<T>::removeNode(int *key)
     }
     else
     {
+
+        ptr = this->getStart();
         while (getNext(i) != NULL)
         {
             if (*getCurrent(i)->getKey() == *key) break;
             ptr = getCurrent(i);
         }
 
-        if (getCurrent(i) == NULL && *getCurrent(i)->getKey() != *key)
+        if (ptr->getNext() == NULL && *ptr->getKey() != *key)
             return;
 
-        if (getCurrent(i) == NULL)
+        if (ptr->getNext() == NULL)
             ptr->setNext(NULL);
 
         else

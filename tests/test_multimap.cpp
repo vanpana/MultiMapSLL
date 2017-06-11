@@ -1,89 +1,92 @@
 #include "test_multimap.h"
 
-class NodeTest : public testing::Test
+class MultimapTest : public testing::Test
 {
 public:
-    Node<int> *n;
-    Node<int> *mn;
+    SinglyLinkedList<int> *sll;
+    Multimap<SinglyLinkedList<int> > *map;
 
     void SetUp() override
     {
-        int *a = (int*)malloc(sizeof(int));
-        int *key = (int*)malloc(sizeof(int));
-
-        *a = 20; *key = 4;
-
-        n = new Node<int>();
-        n = new Node<int>(a);
-
-        mn = new MapNode<int>();
-        mn = new MapNode<int>(key, a);
-
-        free(a);
-        free(key);
+        sll = new SinglyLinkedList<int>();
+        map = new Multimap<SinglyLinkedList<int> >();
     }
 
     void TearDown() override
     {
-        free(n);
-        free(mn);
+        free(sll);
+        free(map);
     }
 };
 
-TEST_F(NodeTest, test_getValue)
+TEST_F(MultimapTest, test_addNode)
 {
-    ASSERT_TRUE(*n->getValue() == 20);
-    ASSERT_TRUE(*mn->getValue() == 20);
-}
-
-TEST_F(NodeTest, test_getNext)
-{
-    ASSERT_TRUE(n->getNext() == NULL);
-    ASSERT_TRUE(mn->getNext() == NULL);
-}
-
-TEST_F(NodeTest, test_getKey)
-{
-    ASSERT_TRUE(*mn->getKey() == 4);
-}
-
-TEST_F(NodeTest, test_setValue)
-{
-    int *a = (int*)malloc(sizeof(int));
-
-    *a = 42;
-
-    n->setValue(a);
-    ASSERT_TRUE(*n->getValue() == 42);
-
-    mn->setValue(a);
-    ASSERT_TRUE(*mn->getValue() == 42);
-
-    free(a);
-}
-
-TEST_F(NodeTest, test_setNext)
-{
-    Node<int> *testnode = new Node<int>();
-
-    n->setNext(testnode);
-    ASSERT_TRUE(n->getNext() == testnode);
-
-    testnode = new MapNode<int>();
-
-    mn->setNext(testnode);
-    ASSERT_TRUE(mn->getNext() == testnode);
-
-    free(testnode);
-}
-
-TEST_F(NodeTest, test_setKey)
-{
-    int *key = (int*)malloc(sizeof(int));
+    int* a = (int*)malloc(sizeof(int));
+    int* key = (int*)malloc(sizeof(int));
+    *a = 123;
     *key = 42;
 
-    mn->setKey(key);
-    ASSERT_TRUE(*mn->getKey() == 42);
+    //Testing add for SLL
+    sll->addNode(a);
+    ASSERT_TRUE(sll->getLength() == 1);
 
+    //Testing add for map
+    map->addNode(key, sll);
+    ASSERT_TRUE(map->getLength() == 1);
+
+    //Testing for no duplicate keys
+    try
+    {
+        map->addNode(key, sll);
+        ASSERT_TRUE (1 == 2);
+    }
+    catch(...)
+    {
+        ASSERT_TRUE(map->getLength() == 1);
+    }
+
+    free(a);
+    free(key);
+}
+
+TEST_F(MultimapTest, test_removeNode)
+{
+    int* a = (int*)malloc(sizeof(int));
+    int* key = (int*)malloc(sizeof(int));
+    *a = 123;
+    *key = 42;
+
+    //Testing add for SLL
+    sll->addNode(a);
+
+    *a = 124;
+    sll->addNode(a);
+    sll->removeNode(a);
+    //If only one node is available, it will be set to NULL, but will still exist.
+    ASSERT_TRUE(sll->getLength() == 1);
+
+    //Testing add for map
+    map->addNode(key, sll);
+
+    *key = 43;
+    map->addNode(key, sll);
+
+    *key = 44;
+    map->addNode(key, sll);
+
+    //Testing middle delete, last delete and first delete.
+    *key = 43;
+    map->removeNode(key);
+    ASSERT_TRUE(map->getLength() == 2);
+
+    *key = 44;
+    map->removeNode(key);
+    ASSERT_TRUE(map->getLength() == 1);
+
+    *key = 42;
+    map->removeNode(key);
+    ASSERT_TRUE(map->getLength() == 0);
+
+    free(a);
     free(key);
 }

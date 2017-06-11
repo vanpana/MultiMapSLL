@@ -75,8 +75,20 @@ gmock/gmock.h
 -
 ../Entities/Multimap.h
 /Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/Entities/Multimap.h
-../Entities/Date.h
-/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/Entities/Date.h
+
+/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/tests/test_node.cpp
+test_node.h
+/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/tests/test_node.h
+
+/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/tests/test_node.h
+gmock/gmock-matchers.h
+-
+gtest/gtest.h
+-
+gmock/gmock.h
+-
+../Entities/Multimap.h
+/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/Entities/Multimap.h
 
 lib/googletest-master/googlemock/include/gmock/gmock-actions.h
 errno.h

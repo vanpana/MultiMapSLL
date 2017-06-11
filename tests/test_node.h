@@ -1,5 +1,5 @@
-#ifndef LMDB_TEST_MULTIMAP_H
-#define LMDB_TEST_MULTIMAP_H
+#ifndef LMDB_TEST_NODE_H
+#define LMDB_TEST_NODE_H
 
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
@@ -8,4 +8,4 @@
 
 using testing::Eq;
 
-#endif //LMDB_TEST_MULTIMAP_H
+#endif //LMDB_TEST_NODE_H

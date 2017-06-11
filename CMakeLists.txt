@@ -17,6 +17,7 @@ Repository/Repository.cpp Repository/Repository.h
 Controller/Controller.h
 UI/Console.cpp UI/Console.h
 
+tests/test_node.cpp tests/test_node.h
 tests/test_multimap.cpp tests/test_multimap.h
 )
 

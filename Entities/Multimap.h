@@ -26,7 +26,7 @@ public:
     //setters
     void setValue(T *value) { this->value = value; }
     void setNext(Node<T> *next) { this->next = next; }
-    virtual void setKey(int *key) {}
+    virtual void setKey(int *key) { return; }
 
     ~Node() { }
 };
