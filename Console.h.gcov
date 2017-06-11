@@ -1,0 +1,35 @@
+        -:    0:Source:/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/UI/Console.h
+        -:    0:Graph:./CMakeFiles/Multimap.dir/main.gcno
+        -:    0:Data:./CMakeFiles/Multimap.dir/main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include "../Controller/Controller.h"
+        -:    2:#include "string.h"
+        -:    3:
+        -:    4:using namespace std;
+        -:    5:
+        -:    6:class Console
+        -:    7:{
+        -:    8:private:
+        -:    9:    Controller *ctrl;
+        -:   10:
+        -:   11:public:
+        -:   12:    Console() { }
+        8:   13:    Console(Controller *ctrl) { this->ctrl = ctrl; }
+        -:   14:
+        -:   15:    void printMenu();
+        -:   16:
+        -:   17:    int getInteger();
+        -:   18:    string getString();
+        -:   19:
+        -:   20:    void addTransaction();
+        -:   21:    void removeCustomer();
+        -:   22:    void removeTransaction();
+        -:   23:    void viewAllCustomerID();
+        -:   24:    void viewCustomerTransactions();
+        -:   25:
+        -:   26:    void loop();
+        -:   27:    void runApp();
+        -:   28:
+       16:   29:    ~Console() { delete ctrl; }
+        -:   30:};

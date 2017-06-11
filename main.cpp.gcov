@@ -1,0 +1,27 @@
+        -:    0:Source:/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/main.cpp
+        -:    0:Graph:./CMakeFiles/Multimap.dir/main.gcno
+        -:    0:Data:./CMakeFiles/Multimap.dir/main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <iostream>
+        -:    2:#include "UI/Console.h"
+        -:    3:#include "gtest/gtest.h"
+        -:    4:
+        -:    5:int main(int argc, char** argv)
+        -:    6:{
+        4:    7:    ::testing::InitGoogleTest(&argc,argv);
+        4:    8:    int assertion = RUN_ALL_TESTS();
+        -:    9:    //system("find . -name \"*.gcda\" -print0 | xargs -0 rm");
+        -:   10:    //system("find . -name \"*.gcno\" -print0 | xargs -0 rm");
+        -:   11:
+       12:   12:    Repository *repo = new FileRepository("data/bankaccounts.txt");
+        -:   13:    //Repository *repo = new Repository();
+        8:   14:    Controller *ctrl = new Controller(repo);
+        8:   15:    Console *ui = new Console(ctrl);
+        -:   16:
+        4:   17:    ui->runApp();
+        -:   18:
+        8:   19:    delete ui;
+        -:   20:
+        4:   21:    return assertion;
+    #####:   22:}

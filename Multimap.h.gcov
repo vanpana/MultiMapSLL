@@ -1,0 +1,265 @@
+        -:    0:Source:/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/UI/../Controller/../Repository/../Entities/Multimap.h
+        -:    0:Graph:./CMakeFiles/Multimap.dir/main.gcno
+        -:    0:Data:./CMakeFiles/Multimap.dir/main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <iostream>
+        -:    2:#include <cstdio>
+        -:    3:#include <cstdlib>
+        -:    4:
+        -:    5:using namespace std;
+        -:    6:
+        -:    7:template <typename T>
+        -:    8:class Node
+        -:    9:{
+        -:   10:private:
+        -:   11:    T *value;
+        -:   12:    Node<T> *next;
+        -:   13:
+        -:   14:public:
+        -:   15:    //default constructor
+        8:   16:    Node() { this->value = NULL; this->next = NULL; }
+        -:   17:
+        -:   18:    //constructor with parameter
+        -:   19:    Node(T*);
+        -:   20:
+        -:   21:    //getters
+        -:   22:    T *getValue() const { return this->value; }
+        -:   23:    Node<T> *getNext() const { return this->next; }
+    #####:   24:    virtual int *getKey() { return NULL; };
+        -:   25:
+        -:   26:    //setters
+        -:   27:    void setValue(T *value) { this->value = value; }
+        -:   28:    void setNext(Node<T> *next) { this->next = next; }
+    #####:   29:    virtual void setKey(int *key) {}
+        -:   30:
+        8:   31:    ~Node() { }
+        -:   32:};
+        -:   33:
+        -:   34:template <typename T>
+        -:   35:class MapNode : public Node<T>
+        -:   36:{
+        -:   37:private:
+        -:   38:    int *key;
+        -:   39:
+        -:   40:public:
+        -:   41:    //default constructor
+        -:   42:    MapNode() : Node<T>() { this->key = NULL; }
+        -:   43:
+        -:   44:    //constructor with parameter
+        -:   45:    MapNode(int *key, T *value) : Node<T>(value) { this->key = new int(*key); }
+        -:   46:
+        -:   47:    //getter
+        -:   48:    int *getKey() override { return this->key; }
+        -:   49:
+        -:   50:    //setter
+        -:   51:    void setKey(int *key) { this->key = key; }
+        -:   52:
+        -:   53:    ~MapNode() { }
+        -:   54:};
+        -:   55:
+        -:   56:
+        -:   57:template <typename T>
+        -:   58:class SinglyLinkedList
+        -:   59:{
+        -:   60:protected:
+        -:   61:    Node<T> *start;
+        -:   62:    int length;
+        -:   63:
+        -:   64:    Node<T> *currentIter;
+        -:   65:
+        -:   66:public:
+        -:   67:    //default constructor
+        8:   68:    SinglyLinkedList<T>() { this->length = 0; this->start = new Node<T>(); }
+        -:   69:
+        -:   70:    class SLLIterator
+        -:   71:    {
+        -:   72:    private:
+        -:   73:        SinglyLinkedList<T> *sll;
+        -:   74:        Node<T> *current;
+        -:   75:
+        -:   76:    public:
+        -:   77:        SLLIterator() {}
+        -:   78:        SLLIterator(SinglyLinkedList<T> *sll) { this->sll = sll; current = NULL; }
+        -:   79:
+        -:   80:        bool isValid() { return !(current->getNext() == NULL); }
+        -:   81:        Node<T> *getCurrent() { return current; }
+        -:   82:        Node<T> *getNext() { if (current == NULL) { current = sll->getStart(); return current; } else if (isValid()) { current = current->getNext(); return current; } return NULL; }
+        -:   83:
+        -:   84:        ~SLLIterator() { }
+        -:   85:    };
+        -:   86:
+        -:   87:    /*
+        -:   88:    Adds a node to the singly linked list.
+        -:   89:    Input: value - T Element
+        -:   90:    Output: nothing, adds the new node to the SLL
+        -:   91:    Throws: nothing (TODO: if element exists, throw exception)
+        -:   92:    */
+        -:   93:    void addNode(T *value);
+        -:   94:
+        -:   95:    /*
+        -:   96:    Removes a node by value.
+        -:   97:    Input: value - T Element
+        -:   98:    Output: nothing, deletes the element from the SLL
+        -:   99:    Throws: nothing (TODO: if element doesn't exist, throw exception)
+        -:  100:    */
+        -:  101:    void removeNode(T *value);
+        -:  102:
+        -:  103:    /*
+        -:  104:    Checks if a node exists by value.
+        -:  105:    Input: value - T Element
+        -:  106:    Output: true if element exists, false otherwise
+        -:  107:    Throws: nothing
+        -:  108:    */
+        -:  109:    bool searchNode(T *value);
+        -:  110:
+        -:  111:
+        -:  112:    //======//
+        -:  113:    /*
+        -:  114:    Returns an iterator for the SLL.
+        -:  115:    */
+        -:  116:    SLLIterator *getIter() { SLLIterator *i = new SLLIterator(this); return i; }
+        -:  117:
+        -:  118:    /*
+        -:  119:    Returns current element from the iteration.
+        -:  120:    */
+        -:  121:    Node<T> *getCurrent(SLLIterator *i) const { return i->getCurrent(); }
+        -:  122:
+        -:  123:    /*
+        -:  124:    Gets next element (if it exists) from the iteration.
+        -:  125:    */
+        -:  126:    Node<T> *getNext(SLLIterator *i) { return i->getNext(); }
+        -:  127:
+        -:  128:    //======//
+    #####:  129:    virtual int**getKeys() {}
+        -:  130:
+        -:  131:    /*
+        -:  132:    Returns a collection of all values in the SLL.
+        -:  133:    */
+        -:  134:    T **getValues();
+        -:  135:
+        -:  136:    /*
+        -:  137:    Returns the start node of the SLL.
+        -:  138:    */
+        -:  139:    Node<T> *getStart() const { return this->start; }
+        -:  140:
+        -:  141:    /*
+        -:  142:    Returns the length of the SLL.
+        -:  143:    */
+        -:  144:    int getLength() const { return this->length; }
+        -:  145:
+        -:  146:    /*
+        -:  147:    Function to display the SLL in the console.
+        -:  148:    */
+        -:  149:    void printSLL();
+        -:  150:
+        -:  151:    friend ostream& operator<<(ostream& os, const SinglyLinkedList& sll)
+        -:  152:    {
+        -:  153:        if (sll.getLength() > 0)
+        -:  154:        {
+        -:  155:            Node<T> *current = sll.getStart();
+        -:  156:
+        -:  157:            while(current != NULL)
+        -:  158:            {
+        -:  159:                os << *current->getValue() << endl;
+        -:  160:                current = current->getNext();
+        -:  161:            }
+        -:  162:        }
+        -:  163:        return os;
+        -:  164:    }
+        -:  165:
+        -:  166:    //TODO: free the memory
+        -:  167:    //default destructor
+       12:  168:    ~SinglyLinkedList() { delete this->start; }
+        -:  169:};
+        -:  170:
+        -:  171:template <typename T>
+        8:  172:class Multimap : public SinglyLinkedList<T>
+        -:  173:{
+        -:  174:public:
+        -:  175:    //default constrctor #TODO: Copy constructor?
+    #####:  176:    Multimap<SinglyLinkedList<T> >() { this-> length = 0; }
+        -:  177:
+        -:  178:    class MultimapIterator : public SinglyLinkedList<T>::SLLIterator
+        -:  179:    {
+        -:  180:    private:
+        -:  181:        Multimap<T>*map;
+        -:  182:        Node<T> *current;
+        -:  183:
+        -:  184:    public:
+        -:  185:        MultimapIterator() {}
+        -:  186:        MultimapIterator(Multimap<T> *map) { this->map = map; current = NULL; }
+        -:  187:
+        -:  188:        bool isValid() { return !(current->getNext() == NULL); }
+        -:  189:        Node<T> *getCurrent() { return current; }
+        -:  190:        Node<T> *getNext() { if (current == NULL) { current = map->getStart(); return current; } else if (isValid()) { current = current->getNext(); return current; } return NULL; }
+        -:  191:
+        -:  192:        ~MultimapIterator() { }
+        -:  193:    };
+        -:  194:
+        -:  195:    /*
+        -:  196:    Adds a node to the singly linked list.
+        -:  197:    Input: value - T Element, key - integer
+        -:  198:    Output: nothing, adds the new node to the Multimap
+        -:  199:    Throws: nothing (TODO: if key exists, throw exception)
+        -:  200:    */
+        -:  201:    void addNode(int *key, T *value);
+        -:  202:
+        -:  203:    /*
+        -:  204:    Removes a node by key.
+        -:  205:    Input: key - integer
+        -:  206:    Output: nothing, deletes the element from the Multimap
+        -:  207:    Throws: nothing (TODO: if element doesn't exist, throw exception)
+        -:  208:    */
+        -:  209:    void removeNode(int *key);
+        -:  210:
+        -:  211:    /*
+        -:  212:    Checks if a node exists by key.
+        -:  213:    Input: key - integer
+        -:  214:    Output: true if element exists, false otherwise
+        -:  215:    Throws: nothing
+        -:  216:    */
+        -:  217:    bool searchNode(int *key);
+        -:  218:
+        -:  219:    /*
+        -:  220:    Returns an iterator for the SLL.
+        -:  221:    */
+        -:  222:    MultimapIterator *getIter() { MultimapIterator *i = new MultimapIterator(this); return i; }
+        -:  223:
+        -:  224:    /*
+        -:  225:    Returns current element from the iteration.
+        -:  226:    */
+        -:  227:    Node<T> *getCurrent(MultimapIterator *i) const { return i->getCurrent(); }
+        -:  228:
+        -:  229:    /*
+        -:  230:    Gets next element (if it exists) from the iteration.
+        -:  231:    */
+        -:  232:    Node<T> *getNext(MultimapIterator *i) { return i->getNext(); }
+        -:  233:
+        -:  234:    /*
+        -:  235:    Returns a collection of all keys in the Multimap.
+        -:  236:    */
+        -:  237:    int** getKeys();
+        -:  238:
+        -:  239:    /*
+        -:  240:    Function to display the Multimap in the console.
+        -:  241:    */
+        -:  242:    void printMultimap();
+        -:  243:
+        -:  244:    friend ostream& operator<<(ostream& os, const Multimap& m)
+        -:  245:    {
+        -:  246:        if (m.getLength() > 0)
+        -:  247:        {
+        -:  248:            Node<T> *current = m.getStart();
+        -:  249:
+        -:  250:            while(current != NULL)
+        -:  251:            {
+        -:  252:                os << *current->getKey() << endl;
+        -:  253:                os << *current->getValue();
+        -:  254:
+        -:  255:                current = current->getNext();
+        -:  256:            }
+        -:  257:        }
+        -:  258:        return os;
+        -:  259:    }
+        -:  260:};

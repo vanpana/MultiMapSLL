@@ -1,0 +1,45 @@
+        -:    0:Source:/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/UI/../Controller/../Repository/Repository.h
+        -:    0:Graph:./CMakeFiles/Multimap.dir/main.gcno
+        -:    0:Data:./CMakeFiles/Multimap.dir/main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include "../Entities/Multimap.h"
+        -:    2:#include "../Entities/Date.h"
+        -:    3:
+        -:    4:class Repository
+        -:    5:{
+        -:    6:protected:
+        -:    7:    //TODO
+        -:    8:    Multimap<SinglyLinkedList<Date> > *items;
+        -:    9:
+        -:   10:public:
+        8:   11:    Repository() { items = new Multimap<SinglyLinkedList<Date> >();}
+        -:   12:    void add(int *key, Date *value);
+        -:   13:
+        -:   14:    void del(int *key);
+        -:   15:    void del(int *key, Date *value);
+        -:   16:
+        -:   17:    bool exists(int *key);
+        -:   18:    bool exists(int *key, Date *value);
+        -:   19:    Multimap<SinglyLinkedList<Date> >* getAll() { return this->items; }
+        -:   20:    int getLength() { return this->items->getLength(); }
+        -:   21:
+       12:   22:    virtual ~Repository() { delete this->items;}
+        -:   23:};
+        -:   24:
+        -:   25:class FileRepository : public Repository
+        -:   26:{
+        -:   27:private:
+        -:   28:    string filename;
+        -:   29:    void readFromFile();
+        -:   30:    void saveToFile();
+        -:   31:
+        -:   32:public:
+        -:   33:    FileRepository() {}
+        -:   34:
+       16:   35:    FileRepository(string filename) : Repository() { this->filename = filename; this->readFromFile(); }
+        -:   36:
+       16:   37:    ~FileRepository() override { saveToFile(); }
+        -:   38:};
+        -:   39:
+        -:   40:string *splitString(string, char);

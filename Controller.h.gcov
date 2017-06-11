@@ -1,0 +1,25 @@
+        -:    0:Source:/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/UI/../Controller/Controller.h
+        -:    0:Graph:./CMakeFiles/Multimap.dir/main.gcno
+        -:    0:Data:./CMakeFiles/Multimap.dir/main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include "../Repository/Repository.h"
+        -:    2:
+        -:    3:class Controller
+        -:    4:{
+        -:    5:private:
+        -:    6:    Repository *repo;
+        -:    7:
+        -:    8:public:
+        -:    9:    Controller() { }
+        8:   10:    Controller(Repository *repo) { this->repo = repo; }
+        -:   11:
+        -:   12:    void add(int *key, Date *value) { this->repo->add(key, value); }
+        -:   13:
+        -:   14:    void del(int *key) { this->repo->del(key); }
+        -:   15:    void del(int *key, Date *value) {this->repo->del(key, value); }
+        -:   16:
+        -:   17:    Multimap<SinglyLinkedList<Date> >* getAll() { return this->repo->getAll(); }
+        -:   18:    int getLength() { return this->repo->getLength(); }
+       16:   19:    ~Controller() { delete this->repo; }
+        -:   20:};
