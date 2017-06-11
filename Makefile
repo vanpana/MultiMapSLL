@@ -296,6 +296,21 @@ main.s:
 	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/main.s
 .PHONY : main.s
 
+# target to build an object file
+tests/test_multimap.o:
+	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/tests/test_multimap.o
+.PHONY : tests/test_multimap.o
+
+# target to preprocess a source file
+tests/test_multimap.i:
+	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/tests/test_multimap.i
+.PHONY : tests/test_multimap.i
+
+# target to generate assembly for a file
+tests/test_multimap.s:
+	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/tests/test_multimap.s
+.PHONY : tests/test_multimap.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -328,6 +343,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... tests/test_multimap.o"
+	@echo "... tests/test_multimap.i"
+	@echo "... tests/test_multimap.s"
 .PHONY : help
 
 
