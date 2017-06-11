@@ -56,16 +56,28 @@ TEST_F(MultimapTest, test_removeNode)
     *a = 123;
     *key = 42;
 
-    //Testing add for SLL
+    sll->removeNode(a);
     sll->addNode(a);
 
     *a = 124;
     sll->addNode(a);
+
+    *a = 125;
+    sll->addNode(a);
+
+    *a = 124;
+    sll->removeNode(a);
+
+    *a = 125;
+    sll->removeNode(a);
+
+    *a = 123;
     sll->removeNode(a);
     //If only one node is available, it will be set to NULL, but will still exist.
     ASSERT_TRUE(sll->getLength() == 1);
 
     //Testing add for map
+    map->removeNode(key);
     map->addNode(key, sll);
 
     *key = 43;
@@ -86,6 +98,55 @@ TEST_F(MultimapTest, test_removeNode)
     *key = 42;
     map->removeNode(key);
     ASSERT_TRUE(map->getLength() == 0);
+
+    free(a);
+    free(key);
+}
+
+TEST_F(MultimapTest, test_searchNode)
+{
+    int* a = (int*)malloc(sizeof(int));
+    int* key = (int*)malloc(sizeof(int));
+    *a = 123;
+    *key = 42;
+
+    //Testing add for SLL
+    sll->addNode(a);
+    ASSERT_TRUE(sll->searchNode(a) == true);
+
+    map->addNode(key, sll);
+    ASSERT_TRUE(map->searchNode(key) == true);
+
+    *a = 124;
+    *key = 43;
+    ASSERT_TRUE(sll->searchNode(a) != true);
+    ASSERT_TRUE(map->searchNode(key) != true);
+
+    free(a);
+    free(key);
+}
+
+TEST_F(MultimapTest, test_getValues)
+{
+    int* a = (int*)malloc(sizeof(int));
+    int* key = (int*)malloc(sizeof(int));
+    *a = 123;
+    *key = 42;
+
+    sll->printSLL();
+    //Testing add for SLL
+    sll->addNode(a);
+    sll->printSLL();
+
+    int **values = (int**)malloc(sll->getLength() * sizeof(int));
+    values = sll->getValues();
+    ASSERT_TRUE(*values[0] == *a);
+
+    map->printMultimap();
+    map->addNode(key, sll);
+    map->printMultimap();
+    values = map->getKeys();
+    ASSERT_TRUE(*values[0] == *key);
 
     free(a);
     free(key);
