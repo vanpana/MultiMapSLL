@@ -222,21 +222,6 @@ gtest/fast:
 .PHONY : gtest/fast
 
 # target to build an object file
-Entities/Date.o:
-	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/Entities/Date.o
-.PHONY : Entities/Date.o
-
-# target to preprocess a source file
-Entities/Date.i:
-	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/Entities/Date.i
-.PHONY : Entities/Date.i
-
-# target to generate assembly for a file
-Entities/Date.s:
-	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/Entities/Date.s
-.PHONY : Entities/Date.s
-
-# target to build an object file
 Entities/Multimap.o:
 	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/Entities/Multimap.o
 .PHONY : Entities/Multimap.o
@@ -297,6 +282,21 @@ main.s:
 .PHONY : main.s
 
 # target to build an object file
+tests/test_date.o:
+	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/tests/test_date.o
+.PHONY : tests/test_date.o
+
+# target to preprocess a source file
+tests/test_date.i:
+	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/tests/test_date.i
+.PHONY : tests/test_date.i
+
+# target to generate assembly for a file
+tests/test_date.s:
+	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/tests/test_date.s
+.PHONY : tests/test_date.s
+
+# target to build an object file
 tests/test_multimap.o:
 	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/tests/test_multimap.o
 .PHONY : tests/test_multimap.o
@@ -343,9 +343,6 @@ help:
 	@echo "... gmock_main"
 	@echo "... gtest_main"
 	@echo "... gtest"
-	@echo "... Entities/Date.o"
-	@echo "... Entities/Date.i"
-	@echo "... Entities/Date.s"
 	@echo "... Entities/Multimap.o"
 	@echo "... Entities/Multimap.i"
 	@echo "... Entities/Multimap.s"
@@ -358,6 +355,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... tests/test_date.o"
+	@echo "... tests/test_date.i"
+	@echo "... tests/test_date.s"
 	@echo "... tests/test_multimap.o"
 	@echo "... tests/test_multimap.i"
 	@echo "... tests/test_multimap.s"

@@ -12,13 +12,14 @@ set(CLANG_ENABLE_CODE_COVERAGE YES)
 set(SOURCE_FILES
 main.cpp
 Entities/Multimap.cpp Entities/Multimap.h
-Entities/Date.cpp Entities/Date.h
+Entities/Date.h
 Repository/Repository.cpp Repository/Repository.h
 Controller/Controller.h
 UI/Console.cpp UI/Console.h
 
 tests/test_node.cpp tests/test_node.h
 tests/test_multimap.cpp tests/test_multimap.h
+tests/test_date.cpp tests/test_date.h
 )
 
 add_subdirectory(lib/googletest-master)

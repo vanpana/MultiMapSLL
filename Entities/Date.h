@@ -1,3 +1,5 @@
+using namespace std;
+
 class Date
 {
 private:
@@ -25,7 +27,7 @@ public:
     {
         return left.getDay() == right.getDay() &&
             left.getMonth() == right.getMonth() &&
-            left.getYear() == left.getYear();
+            left.getYear() == right.getYear();
     }
 
     friend bool operator!=(const Date& left, const Date& right)

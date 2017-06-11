@@ -105,33 +105,9 @@ CMakeFiles/Multimap.dir/Entities/Multimap.o.provides: CMakeFiles/Multimap.dir/En
 CMakeFiles/Multimap.dir/Entities/Multimap.o.provides.build: CMakeFiles/Multimap.dir/Entities/Multimap.o
 
 
-CMakeFiles/Multimap.dir/Entities/Date.o: CMakeFiles/Multimap.dir/flags.make
-CMakeFiles/Multimap.dir/Entities/Date.o: Entities/Date.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Multimap.dir/Entities/Date.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Multimap.dir/Entities/Date.o -c "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/Entities/Date.cpp"
-
-CMakeFiles/Multimap.dir/Entities/Date.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Multimap.dir/Entities/Date.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/Entities/Date.cpp" > CMakeFiles/Multimap.dir/Entities/Date.i
-
-CMakeFiles/Multimap.dir/Entities/Date.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Multimap.dir/Entities/Date.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/Entities/Date.cpp" -o CMakeFiles/Multimap.dir/Entities/Date.s
-
-CMakeFiles/Multimap.dir/Entities/Date.o.requires:
-
-.PHONY : CMakeFiles/Multimap.dir/Entities/Date.o.requires
-
-CMakeFiles/Multimap.dir/Entities/Date.o.provides: CMakeFiles/Multimap.dir/Entities/Date.o.requires
-	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/Entities/Date.o.provides.build
-.PHONY : CMakeFiles/Multimap.dir/Entities/Date.o.provides
-
-CMakeFiles/Multimap.dir/Entities/Date.o.provides.build: CMakeFiles/Multimap.dir/Entities/Date.o
-
-
 CMakeFiles/Multimap.dir/Repository/Repository.o: CMakeFiles/Multimap.dir/flags.make
 CMakeFiles/Multimap.dir/Repository/Repository.o: Repository/Repository.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Multimap.dir/Repository/Repository.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Multimap.dir/Repository/Repository.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Multimap.dir/Repository/Repository.o -c "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/Repository/Repository.cpp"
 
 CMakeFiles/Multimap.dir/Repository/Repository.i: cmake_force
@@ -155,7 +131,7 @@ CMakeFiles/Multimap.dir/Repository/Repository.o.provides.build: CMakeFiles/Multi
 
 CMakeFiles/Multimap.dir/UI/Console.o: CMakeFiles/Multimap.dir/flags.make
 CMakeFiles/Multimap.dir/UI/Console.o: UI/Console.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Multimap.dir/UI/Console.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Multimap.dir/UI/Console.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Multimap.dir/UI/Console.o -c "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/UI/Console.cpp"
 
 CMakeFiles/Multimap.dir/UI/Console.i: cmake_force
@@ -179,7 +155,7 @@ CMakeFiles/Multimap.dir/UI/Console.o.provides.build: CMakeFiles/Multimap.dir/UI/
 
 CMakeFiles/Multimap.dir/tests/test_node.o: CMakeFiles/Multimap.dir/flags.make
 CMakeFiles/Multimap.dir/tests/test_node.o: tests/test_node.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Multimap.dir/tests/test_node.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Multimap.dir/tests/test_node.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Multimap.dir/tests/test_node.o -c "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/tests/test_node.cpp"
 
 CMakeFiles/Multimap.dir/tests/test_node.i: cmake_force
@@ -203,7 +179,7 @@ CMakeFiles/Multimap.dir/tests/test_node.o.provides.build: CMakeFiles/Multimap.di
 
 CMakeFiles/Multimap.dir/tests/test_multimap.o: CMakeFiles/Multimap.dir/flags.make
 CMakeFiles/Multimap.dir/tests/test_multimap.o: tests/test_multimap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Multimap.dir/tests/test_multimap.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Multimap.dir/tests/test_multimap.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Multimap.dir/tests/test_multimap.o -c "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/tests/test_multimap.cpp"
 
 CMakeFiles/Multimap.dir/tests/test_multimap.i: cmake_force
@@ -225,26 +201,50 @@ CMakeFiles/Multimap.dir/tests/test_multimap.o.provides: CMakeFiles/Multimap.dir/
 CMakeFiles/Multimap.dir/tests/test_multimap.o.provides.build: CMakeFiles/Multimap.dir/tests/test_multimap.o
 
 
+CMakeFiles/Multimap.dir/tests/test_date.o: CMakeFiles/Multimap.dir/flags.make
+CMakeFiles/Multimap.dir/tests/test_date.o: tests/test_date.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Multimap.dir/tests/test_date.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Multimap.dir/tests/test_date.o -c "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/tests/test_date.cpp"
+
+CMakeFiles/Multimap.dir/tests/test_date.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Multimap.dir/tests/test_date.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/tests/test_date.cpp" > CMakeFiles/Multimap.dir/tests/test_date.i
+
+CMakeFiles/Multimap.dir/tests/test_date.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Multimap.dir/tests/test_date.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/tests/test_date.cpp" -o CMakeFiles/Multimap.dir/tests/test_date.s
+
+CMakeFiles/Multimap.dir/tests/test_date.o.requires:
+
+.PHONY : CMakeFiles/Multimap.dir/tests/test_date.o.requires
+
+CMakeFiles/Multimap.dir/tests/test_date.o.provides: CMakeFiles/Multimap.dir/tests/test_date.o.requires
+	$(MAKE) -f CMakeFiles/Multimap.dir/build.make CMakeFiles/Multimap.dir/tests/test_date.o.provides.build
+.PHONY : CMakeFiles/Multimap.dir/tests/test_date.o.provides
+
+CMakeFiles/Multimap.dir/tests/test_date.o.provides.build: CMakeFiles/Multimap.dir/tests/test_date.o
+
+
 # Object files for target Multimap
 Multimap_OBJECTS = \
 "CMakeFiles/Multimap.dir/main.o" \
 "CMakeFiles/Multimap.dir/Entities/Multimap.o" \
-"CMakeFiles/Multimap.dir/Entities/Date.o" \
 "CMakeFiles/Multimap.dir/Repository/Repository.o" \
 "CMakeFiles/Multimap.dir/UI/Console.o" \
 "CMakeFiles/Multimap.dir/tests/test_node.o" \
-"CMakeFiles/Multimap.dir/tests/test_multimap.o"
+"CMakeFiles/Multimap.dir/tests/test_multimap.o" \
+"CMakeFiles/Multimap.dir/tests/test_date.o"
 
 # External object files for target Multimap
 Multimap_EXTERNAL_OBJECTS =
 
 Multimap: CMakeFiles/Multimap.dir/main.o
 Multimap: CMakeFiles/Multimap.dir/Entities/Multimap.o
-Multimap: CMakeFiles/Multimap.dir/Entities/Date.o
 Multimap: CMakeFiles/Multimap.dir/Repository/Repository.o
 Multimap: CMakeFiles/Multimap.dir/UI/Console.o
 Multimap: CMakeFiles/Multimap.dir/tests/test_node.o
 Multimap: CMakeFiles/Multimap.dir/tests/test_multimap.o
+Multimap: CMakeFiles/Multimap.dir/tests/test_date.o
 Multimap: CMakeFiles/Multimap.dir/build.make
 Multimap: lib/googletest-master/googlemock/gtest/libgtest_main.dylib
 Multimap: lib/googletest-master/googlemock/gtest/libgtest.dylib
@@ -259,11 +259,11 @@ CMakeFiles/Multimap.dir/build: Multimap
 
 CMakeFiles/Multimap.dir/requires: CMakeFiles/Multimap.dir/main.o.requires
 CMakeFiles/Multimap.dir/requires: CMakeFiles/Multimap.dir/Entities/Multimap.o.requires
-CMakeFiles/Multimap.dir/requires: CMakeFiles/Multimap.dir/Entities/Date.o.requires
 CMakeFiles/Multimap.dir/requires: CMakeFiles/Multimap.dir/Repository/Repository.o.requires
 CMakeFiles/Multimap.dir/requires: CMakeFiles/Multimap.dir/UI/Console.o.requires
 CMakeFiles/Multimap.dir/requires: CMakeFiles/Multimap.dir/tests/test_node.o.requires
 CMakeFiles/Multimap.dir/requires: CMakeFiles/Multimap.dir/tests/test_multimap.o.requires
+CMakeFiles/Multimap.dir/requires: CMakeFiles/Multimap.dir/tests/test_date.o.requires
 
 .PHONY : CMakeFiles/Multimap.dir/requires
 
