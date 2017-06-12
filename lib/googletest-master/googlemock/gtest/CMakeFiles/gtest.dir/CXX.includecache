@@ -6,23 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/lib/googletest-master/googletest/src/gtest-all.cc
+/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/lib/googletest-master/googletest/src/gtest-all.cc
 gtest/gtest.h
-/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/lib/googletest-master/googletest/src/gtest/gtest.h
+/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/lib/googletest-master/googletest/src/gtest/gtest.h
 src/gtest.cc
-/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/lib/googletest-master/googletest/src/src/gtest.cc
+/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/lib/googletest-master/googletest/src/src/gtest.cc
 src/gtest-death-test.cc
-/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/lib/googletest-master/googletest/src/src/gtest-death-test.cc
+/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/lib/googletest-master/googletest/src/src/gtest-death-test.cc
 src/gtest-filepath.cc
-/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/lib/googletest-master/googletest/src/src/gtest-filepath.cc
+/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/lib/googletest-master/googletest/src/src/gtest-filepath.cc
 src/gtest-port.cc
-/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/lib/googletest-master/googletest/src/src/gtest-port.cc
+/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/lib/googletest-master/googletest/src/src/gtest-port.cc
 src/gtest-printers.cc
-/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/lib/googletest-master/googletest/src/src/gtest-printers.cc
+/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/lib/googletest-master/googletest/src/src/gtest-printers.cc
 src/gtest-test-part.cc
-/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/lib/googletest-master/googletest/src/src/gtest-test-part.cc
+/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/lib/googletest-master/googletest/src/src/gtest-test-part.cc
 src/gtest-typed-test.cc
-/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/lib/googletest-master/googletest/src/src/gtest-typed-test.cc
+/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/lib/googletest-master/googletest/src/src/gtest-typed-test.cc
 
 lib/googletest-master/googletest/include/gtest/gtest-death-test.h
 gtest/internal/gtest-death-test-internal.h

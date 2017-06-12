@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.8.1/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL"
+CMAKE_SOURCE_DIR = "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL"
+CMAKE_BINARY_DIR = "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,9 +126,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/CMakeFiles" "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/CMakeFiles" "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target

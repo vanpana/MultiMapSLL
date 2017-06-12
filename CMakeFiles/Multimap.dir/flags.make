@@ -6,5 +6,5 @@ CXX_FLAGS = -g -O0 -Wall -fprofile-arcs -ftest-coverage   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I"/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/lib/googletest-master/googletest/include" -I"/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/lib/googletest-master/googlemock/include" 
+CXX_INCLUDES = -I"/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/lib/googletest-master/googletest/include" -I"/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/lib/googletest-master/googlemock/include" 
 

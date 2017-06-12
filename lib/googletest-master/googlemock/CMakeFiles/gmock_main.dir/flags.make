@@ -6,5 +6,5 @@ CXX_FLAGS = -g -O0 -Wall -fprofile-arcs -ftest-coverage -fPIC   -g -O0 -Wall -fp
 
 CXX_DEFINES = -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_main_EXPORTS
 
-CXX_INCLUDES = -I"/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/lib/googletest-master/googlemock/include" -I"/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/lib/googletest-master/googlemock" -I"/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/lib/googletest-master/googletest/include" -I"/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/DSA/MultiMapSLL/lib/googletest-master/googletest" 
+CXX_INCLUDES = -I"/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/lib/googletest-master/googlemock/include" -I"/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/lib/googletest-master/googlemock" -I"/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/lib/googletest-master/googletest/include" -I"/Users/vanpana/Google Drive/Uni/An 1/Semestrul 2 - Mac/dsa/MultiMapSLL/lib/googletest-master/googletest" 
 
