@@ -10,3 +10,4 @@ CTestTestfile.cmake
 CODE_COVERAGE/
 *.gcno
 *.gcda
+*.gcov
