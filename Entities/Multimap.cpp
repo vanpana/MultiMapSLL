@@ -17,10 +17,92 @@ Node<T>::Node(T *value)
     this->next = NULL;
 }
 
+template <typename T>
+Node<T>::Node(const Node<T>& other)
+{
+    this->value = other.value;
+    this->next = other.next;
+}
+
+template <typename T>
+Node<T> &Node<T>::operator=(const Node<T>& other)
+{
+    if (this == &other)
+        return *this;
+
+    delete this->value;
+
+    this->value = other.value;
+    this->next = other.next;
+
+    return *this;
+}
+
+/*
+====
+MapNode
+*/
+
+template <typename T>
+MapNode<T>::MapNode(const MapNode<T>& other)
+{
+    this->key = other.key;
+    this->value = other.value;
+    this->next = other.next;
+}
+
+template <typename T>
+MapNode<T> &MapNode<T>::operator=(const MapNode<T>& other)
+{
+    if (this == &other)
+        return *this;
+
+    delete this->value;
+
+    this->key = other.key;
+    this->value = other.value;
+    this->next = other.next;
+
+    return *this;
+}
+
 /*
 ==================
 Singly Linked List
 */
+
+template <typename T>
+SinglyLinkedList<T>::SinglyLinkedList(const SinglyLinkedList<T>& other)
+{
+    this->length = 0;
+
+    this->start = new Node<T>();
+
+    SLLIterator *sllt = this->getIter();
+    SLLIterator *sllo = other.getIter();
+
+    while (getNext(sllo) != NULL)
+        this->addNode(getCurrent(sllo)->getValue());
+
+}
+
+template <typename T>
+SinglyLinkedList<T> &SinglyLinkedList<T>::operator=(const SinglyLinkedList<T>& other)
+{
+    if (this == &other)
+        return *this;
+
+    this->length = 0;
+
+    this->start = new Node<T>();
+
+    SLLIterator *sllt = this->getIter();
+    SLLIterator *sllo = other.getIter();
+
+    while (getNext(sllo) != NULL)
+        this->addNode(getCurrent(sllo)->getValue());
+
+}
 
 template <typename T>
 void SinglyLinkedList<T>::addNode(T *value)
@@ -56,10 +138,8 @@ void SinglyLinkedList<T>::removeNode(T *value)
             this->start = getNext(i);
         else
             this->start = new Node<T>();
-
-        return;
     }
-   else
+    else
     {
         while (getNext(i) != NULL)
         {
@@ -110,6 +190,38 @@ T **SinglyLinkedList<T>::getValues()
 ========
 MULTIMAP
 */
+
+template <typename T>
+Multimap<T>::Multimap(const Multimap<T>& other)
+{
+    this->length = 0;
+
+    this->start = new MapNode<T>();
+
+    MultimapIterator *sllt = this->getIter();
+    MultimapIterator *sllo = other.getIter();
+
+    while (getNext(sllo) != NULL)
+        this->addNode(getCurrent(sllo)->getKey(), getCurrent(sllo)->getValue());
+
+}
+
+template <typename T>
+Multimap<T> &Multimap<T>::operator=(const Multimap<T>& other)
+{
+    if (this == &other)
+        return *this;
+
+    this->length = 0;
+
+    this->start = new MapNode<T>();
+
+    MultimapIterator *sllt = this->getIter();
+    MultimapIterator *sllo = other.getIter();
+
+    while (getNext(sllo) != NULL)
+        this->addNode(getCurrent(sllo)->getKey(), getCurrent(sllo)->getValue());        
+}
 
 template <typename T>
 void Multimap<T>::addNode(int *key, T *value)

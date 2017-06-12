@@ -80,7 +80,7 @@ void Console::removeTransaction()
 void Console::viewAllCustomerID()
 {
     Multimap<SinglyLinkedList<Date> > *items = this->ctrl->getAll();
-    Multimap<SinglyLinkedList<Date> >::MultimapIterator *i = new Multimap<SinglyLinkedList<Date> >::MultimapIterator(items);
+    Multimap<SinglyLinkedList<Date> >::MultimapIterator *i = new Multimap<SinglyLinkedList<Date> >::MultimapIterator(items->getStart());
 
     cout << "There are " << items->getLength() << " clients.\n";
 
@@ -95,7 +95,7 @@ void Console::viewCustomerTransactions()
     int id = getInteger();
 
     Multimap<SinglyLinkedList<Date> > *items = this->ctrl->getAll();
-    Multimap<SinglyLinkedList<Date> >::MultimapIterator *i = new Multimap<SinglyLinkedList<Date> >::MultimapIterator(items);
+    Multimap<SinglyLinkedList<Date> >::MultimapIterator *i = new Multimap<SinglyLinkedList<Date> >::MultimapIterator(items->getStart());
 
     if (items->getLength() > 0)
     {

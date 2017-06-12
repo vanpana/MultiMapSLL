@@ -24,7 +24,7 @@ void Repository::add(int *key, Date *value)
 {
     if (items->searchNode(key))
     {
-        Multimap<SinglyLinkedList<Date> >::MultimapIterator *i = new Multimap<SinglyLinkedList<Date> >::MultimapIterator(items);
+        Multimap<SinglyLinkedList<Date> >::MultimapIterator *i = new Multimap<SinglyLinkedList<Date> >::MultimapIterator(items->getStart());
 
         while (*items->getNext(i)->getKey() != *key)
             continue;
@@ -51,7 +51,7 @@ void Repository::del(int *key, Date* value)
     if (items->searchNode(key))
     {
         Node<SinglyLinkedList<Date> > *current = items->getStart();
-        Multimap<SinglyLinkedList<Date> >::MultimapIterator *i = new Multimap<SinglyLinkedList<Date> >::MultimapIterator(items);
+        Multimap<SinglyLinkedList<Date> >::MultimapIterator *i = new Multimap<SinglyLinkedList<Date> >::MultimapIterator(items->getStart());
 
 
         while (*items->getNext(i)->getKey() != *key)

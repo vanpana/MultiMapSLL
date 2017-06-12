@@ -74,9 +74,11 @@ TEST_F(MultimapTest, test_removeNode)
     *a = 123;
     sll->removeNode(a);
     //If only one node is available, it will be set to NULL, but will still exist.
-    ASSERT_TRUE(sll->getLength() == 1);
+    cout << sll->getLength() << endl<<endl;
+    ASSERT_TRUE(sll->getLength() == 0);
 
-    //Testing add for map
+    sll->addNode(a);
+
     map->removeNode(key);
     map->addNode(key, sll);
 

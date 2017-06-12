@@ -7,7 +7,7 @@ using namespace std;
 template <typename T>
 class Node
 {
-private:
+protected:
     T *value;
     Node<T> *next;
 
@@ -17,6 +17,12 @@ public:
 
     //constructor with parameter
     Node(T*);
+
+    //copy constructor
+    Node(const Node<T>& other);
+
+    //overloading equal operator
+    Node<T> &operator=(const Node<T>& other);
 
     //getters
     T *getValue() const { return this->value; }
@@ -34,7 +40,7 @@ public:
 template <typename T>
 class MapNode : public Node<T>
 {
-private:
+protected:
     int *key;
 
 public:
@@ -43,6 +49,12 @@ public:
 
     //constructor with parameter
     MapNode(int *key, T *value) : Node<T>(value) { this->key = new int(*key); }
+
+    //copy constructor
+    MapNode(const MapNode<T>& other);
+
+    //overloading equal operator
+    MapNode<T> &operator=(const MapNode<T>& other);
 
     //getter
     int *getKey() override { return this->key; }
@@ -61,25 +73,30 @@ protected:
     Node<T> *start;
     int length;
 
-    Node<T> *currentIter;
-
 public:
     //default constructor
     SinglyLinkedList<T>() { this->length = 0; this->start = new Node<T>(); }
 
+    //copy constructor
+    SinglyLinkedList(const SinglyLinkedList<T>& other);
+
+    //overloading equal operator
+    SinglyLinkedList<T> &operator=(const SinglyLinkedList<T>& other);
+
     class SLLIterator
     {
     private:
-        SinglyLinkedList<T> *sll;
-        Node<T> *current;
+        Node<T> *current, *start;
 
     public:
         SLLIterator() {}
-        SLLIterator(SinglyLinkedList<T> *sll) { this->sll = sll; current = NULL; }
+        SLLIterator(Node<T> *node) { this->start = node; this->current = NULL; }
+
+        //SLLIterator(const SLLIterator& other) { this->start = other.start; this->current = other.current; }
 
         bool isValid() { return !(current->getNext() == NULL); }
         Node<T> *getCurrent() { return current; }
-        Node<T> *getNext() { if (current == NULL) { current = sll->getStart(); return current; } else if (isValid()) { current = current->getNext(); return current; } return NULL; }
+        Node<T> *getNext() { if (current == NULL) { current = start; return current; } else if (isValid()) { current = current->getNext(); return current; } return NULL; }
 
         ~SLLIterator() { }
     };
@@ -113,7 +130,7 @@ public:
     /*
     Returns an iterator for the SLL.
     */
-    SLLIterator *getIter() { SLLIterator *i = new SLLIterator(this); return i; }
+    SLLIterator *getIter() const { SLLIterator *i = new SLLIterator(this->start); return i; }
 
     /*
     Returns current element from the iteration.
@@ -123,7 +140,7 @@ public:
     /*
     Gets next element (if it exists) from the iteration.
     */
-    Node<T> *getNext(SLLIterator *i) { return i->getNext(); }
+    Node<T> *getNext(SLLIterator *i) const { return i->getNext(); }
 
     //======//
     virtual int**getKeys() {}
@@ -172,22 +189,27 @@ template <typename T>
 class Multimap : public SinglyLinkedList<T>
 {
 public:
-    //default constrctor #TODO: Copy constructor?
+    //default constrctor
     Multimap<SinglyLinkedList<T> >() { this-> length = 0; }
+
+    //copy constructor
+    Multimap(const Multimap<T>& other);
+
+    //overloading equal operator
+    Multimap<T>&operator=(const Multimap<T>& other);
 
     class MultimapIterator : public SinglyLinkedList<T>::SLLIterator
     {
     private:
-        Multimap<T>*map;
-        Node<T> *current;
+        Node<T> *current, *start;
 
     public:
         MultimapIterator() {}
-        MultimapIterator(Multimap<T> *map) { this->map = map; current = NULL; }
+        MultimapIterator(Node<T> *node) { this->start = node; this->current = NULL; }
 
         bool isValid() { return !(current->getNext() == NULL); }
         Node<T> *getCurrent() { return current; }
-        Node<T> *getNext() { if (current == NULL) { current = map->getStart(); return current; } else if (isValid()) { current = current->getNext(); return current; } return NULL; }
+        Node<T> *getNext() { if (current == NULL) { current = start; return current; } else if (isValid()) { current = current->getNext(); return current; } return NULL; }
 
         ~MultimapIterator() { }
     };
@@ -219,7 +241,7 @@ public:
     /*
     Returns an iterator for the SLL.
     */
-    MultimapIterator *getIter() { MultimapIterator *i = new MultimapIterator(this); return i; }
+    MultimapIterator *getIter() const { MultimapIterator *i = new MultimapIterator(this->start); return i; }
 
     /*
     Returns current element from the iteration.
