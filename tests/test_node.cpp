@@ -80,7 +80,6 @@ TEST_F(NodeTest, test_setNext)
 
 TEST_F(NodeTest, test_setKey)
 {
-
     int *key = (int*)malloc(sizeof(int));
     *key = 42;
 
@@ -89,4 +88,26 @@ TEST_F(NodeTest, test_setKey)
     ASSERT_TRUE(*mn->getKey() == 42);
 
     free(key);
+}
+
+TEST_F(NodeTest, test_oveloaders)
+{
+    int *a = (int*)malloc(sizeof(int));
+    int *key = (int*)malloc(sizeof(int));
+
+    *a = 20; *key = 4;
+
+    Node<int> nodetest = Node<int>(a);
+    Node<int> n2(nodetest);
+    Node<int> n3;
+    n3 = nodetest;
+    n3 = n3;
+
+    MapNode<int> maptest = MapNode<int>(a, key);
+    MapNode<int> mn2(maptest);
+    MapNode<int> mn3;
+    mn3 = maptest;
+    mn3 = mn3;
+
+    free(a); free(key);
 }

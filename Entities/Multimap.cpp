@@ -220,7 +220,7 @@ Multimap<T> &Multimap<T>::operator=(const Multimap<T>& other)
     MultimapIterator *sllo = other.getIter();
 
     while (getNext(sllo) != NULL)
-        this->addNode(getCurrent(sllo)->getKey(), getCurrent(sllo)->getValue());        
+        this->addNode(getCurrent(sllo)->getKey(), getCurrent(sllo)->getValue());
 }
 
 template <typename T>
@@ -357,6 +357,7 @@ TEMPLATE DEFINITIONS
 template class Node<int>;
 template class Node<Date>;
 
+template class MapNode<int>;
 template class MapNode<SinglyLinkedList<int> >;
 template class MapNode<SinglyLinkedList<Date> >;
 

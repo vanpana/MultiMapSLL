@@ -51,10 +51,22 @@ public:
     MapNode(int *key, T *value) : Node<T>(value) { this->key = new int(*key); }
 
     //copy constructor
-    MapNode(const MapNode<T>& other);
+    MapNode(const MapNode<T>& other);// { this->key = other.key; this->value = other.value; this->next = other.next; }
 
     //overloading equal operator
     MapNode<T> &operator=(const MapNode<T>& other);
+    // {
+    //     if (this == &other)
+    //         return *this;
+    //
+    //     delete this->value;
+    //
+    //     this->key = other.key;
+    //     this->value = other.value;
+    //     this->next = other.next;
+    //
+    //     return *this;
+    // }
 
     //getter
     int *getKey() override { return this->key; }

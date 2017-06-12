@@ -136,7 +136,6 @@ TEST_F(MultimapTest, test_getValues)
     *key = 42;
 
     sll->printSLL();
-    //Testing add for SLL
     sll->addNode(a);
     sll->printSLL();
 
@@ -149,6 +148,31 @@ TEST_F(MultimapTest, test_getValues)
     map->printMultimap();
     values = map->getKeys();
     ASSERT_TRUE(*values[0] == *key);
+
+    free(a);
+    free(key);
+}
+
+TEST_F(MultimapTest, test_overloader)
+{
+    int* a = (int*)malloc(sizeof(int));
+    int* key = (int*)malloc(sizeof(int));
+    *a = 123;
+    *key = 42;
+
+    SinglyLinkedList<int> slltest = SinglyLinkedList<int>();
+    slltest.addNode(a);
+    SinglyLinkedList<int> slltest2 = slltest;
+    SinglyLinkedList<int> slltest3;
+    slltest3 = slltest;
+    slltest3 = slltest3;
+
+    Multimap<SinglyLinkedList<int> > maptest = Multimap<SinglyLinkedList<int> >();
+    maptest.addNode(key,&slltest);
+    Multimap<SinglyLinkedList<int> > maptest2 = maptest;
+    Multimap<SinglyLinkedList<int> > maptest3;
+    maptest3 = maptest;
+    maptest3 = maptest3;
 
     free(a);
     free(key);
